@@ -11,6 +11,16 @@ export type Group =
 export interface ProjectLink {
   label: string;
   href: string;
+  /** "live" renders a URL preview card; "repo" renders a compact source link. */
+  kind?: "live" | "repo";
+}
+
+/** Set when a project was built for a competition rather than as product work. */
+export interface Hackathon {
+  name: string;
+  year: string;
+  /** Only set this when there is a real placing to report. */
+  result?: string;
 }
 
 export interface Shot {
@@ -57,6 +67,7 @@ export interface Project {
   challenges?: string;
   outcome?: string;
   links?: ProjectLink[];
+  hackathon?: Hackathon;
   hero: Shot;
   gallery: Shot[];
   featured: boolean;

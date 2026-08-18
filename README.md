@@ -6,7 +6,7 @@ ScrollTrigger · Lenis · Motion · React Three Fiber.
 
 ```bash
 npm run dev     # http://localhost:3000
-npm run build   # 29 static pages (home + 20 case studies + journal + 4 posts + 404)
+npm run build   # 27 static pages (home + 19 case studies + journal + 4 posts + 404)
 npm run lint
 ```
 
@@ -37,17 +37,20 @@ everything else roughly 16:10.
 node scripts/gen-placeholders.mjs
 ```
 
-That writes 56 SVG mockups — wallets, dashboards, outbreak maps, confusion
+That writes 55 SVG mockups — wallets, dashboards, outbreak maps, confusion
 matrices, terminal output — each matched to its product's domain and tagged
 `PLACEHOLDER` in the corner so none of them can be mistaken for a real screen.
 
-### 2. Fill in the experience timeline
+### 2. Experience, credentials and hackathons
 
-`src/data/experience.ts` currently holds **four dummy rows**. Each one carries
-`placeholder: true`, which renders a visible badge on the row plus a disclaimer
-above the timeline. Replace the entries with your real roles and delete the
-`placeholder` flag — the badges and the disclaimer remove themselves once no
-entry is flagged.
+`src/data/experience.ts` holds four real roles (Cactus AI, Olyves, iléSure,
+Gratebridge). Two dates disagree between the CV and the brief and carry an
+inline comment saying which was used — check those.
+
+`src/data/education.ts` holds the degree, two certifications (each with its
+public verification URL, rendered as a preview card) and the three hackathons.
+Hackathon entries are mirrored by a `hackathon` field on the matching project,
+which drives the badge on that case study.
 
 ### 3. Publish the journal drafts
 
@@ -78,13 +81,11 @@ out of style. Adding a post means adding one object to the array.
 project". Three items are marked `placeholder: true` and render a small `TODO`
 next to them until you fix them:
 
-- the three social URLs (GitHub / LinkedIn / X)
-- the résumé link — drop a PDF at `public/basit-olajide-cv.pdf`
-- two of the four metric tiles (`Products shipped`, `Years building`) render as
-  an em dash rather than an invented number
+- the three social URLs (GitHub / LinkedIn / X) — still the only placeholders left
 
-The other two metrics are computed from `projects.ts` at build time, so they
-cannot drift.
+The résumé points at the hosted CV on Cloudinary. Two of the four metric tiles
+are computed from `projects.ts` at build time so they cannot drift; the other
+two (`Products shipped`, `Years building`) are set by hand in `site.ts`.
 
 The About portrait is an abstract placeholder that shifts under the pointer.
 Swap the `<figure>` contents in `src/components/sections/About.tsx` for an
@@ -97,7 +98,7 @@ Swap the `<figure>` contents in `src/components/sections/About.tsx` for an
 ```
 src/data/
   types.ts        Project / ExperienceEntry / TechNode shapes
-  projects.ts     20 projects — the single source of truth
+  projects.ts     19 projects — the single source of truth
   posts.ts        journal posts (all four flagged as drafts)
   site.ts         identity, hero copy, chapters, nav, about, metrics
   experience.ts   timeline (dummy data, flagged)
@@ -112,8 +113,14 @@ Each project carries a `status`:
   thin. The case study shows an "Awaiting assets" note explaining what's
   missing, and the archive row shows a small badge.
 
-Four projects are currently `awaiting-assets`: Gratebridge, Hermes, Hermes 02
-and Stock Market Predictor.
+Two projects are currently `awaiting-assets`: Gratebridge and SIWES Tracker.
+
+Live products and repositories are declared per project in `links`, tagged
+`kind: "live"` or `kind: "repo"`. Live links render as URL preview cards on the
+case study; repos render as compact rows. The preview artwork is generated from
+the URL rather than scraped — see the note at the top of
+`src/components/ui/LinkPreview.tsx` for why, and pass `image` to swap in a real
+screenshot.
 
 ---
 
@@ -133,7 +140,9 @@ src/
     motion/     SmoothScroll (Lenis↔ScrollTrigger), CustomCursor,
                 MagneticButton, TextReveal / SplitText / Reveal
     sections/   Hero, Statement, FeaturedWork, HorizontalGallery,
-                TechnologyConstellation, ExperienceTimeline, About, Metrics
+                TechnologyConstellation, ExperienceTimeline, Credentials,
+                About, Metrics
+    ui/         LinkPreview / LinkRow — URL preview cards
     project/    ProjectImage, ProjectArchive, CaseStudy
     journal/    JournalIndex, PostView
     three/      ThreeHero — the hero WebGL scene

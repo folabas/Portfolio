@@ -54,7 +54,7 @@ export function FooterCTA() {
       className="relative overflow-hidden border-t border-line px-5 pb-8 pt-[12vh] md:px-10"
     >
       <div className="mx-auto max-w-[1600px]">
-        <ChapterLabel index={7} label="Contact" id="contact" />
+        <ChapterLabel index={8} label="Contact" id="contact" />
 
         <div className="relative mt-10">
           <TextReveal

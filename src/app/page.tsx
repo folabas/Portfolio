@@ -5,6 +5,7 @@ import { HorizontalGallery } from "@/components/sections/HorizontalGallery";
 import { ProjectArchive } from "@/components/project/ProjectArchive";
 import { TechnologyConstellation } from "@/components/sections/TechnologyConstellation";
 import { ExperienceTimeline } from "@/components/sections/ExperienceTimeline";
+import { Credentials } from "@/components/sections/Credentials";
 import { About } from "@/components/sections/About";
 import { Metrics } from "@/components/sections/Metrics";
 import { FooterCTA } from "@/components/layout/FooterCTA";
@@ -26,6 +27,7 @@ export default function Home() {
       <ProjectArchive />
       <TechnologyConstellation />
       <ExperienceTimeline />
+      <Credentials />
       <About />
       <Metrics />
       <FooterCTA />

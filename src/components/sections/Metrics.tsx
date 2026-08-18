@@ -42,25 +42,18 @@ export function Metrics() {
   return (
     <section className="relative px-5 py-[8vh] md:px-10" aria-label="By the numbers">
       <div ref={root} className="mx-auto grid max-w-[1600px] grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line lg:grid-cols-4">
-        {metrics.map((m) => {
-          const isPlaceholder = "placeholder" in m && m.placeholder;
-          return (
-            <div key={m.label} className="group bg-ink px-5 py-8 transition-colors duration-500 hover:bg-ink-2 md:px-7 md:py-10">
-              <p className="display text-[clamp(2.2rem,5.5vw,4rem)] leading-none text-paper">
-                {isPlaceholder ? (
-                  <span className="text-muted-2">—</span>
-                ) : (
-                  <>
-                    <span data-count={m.value}>0</span>
-                    {m.suffix}
-                  </>
-                )}
-              </p>
-              <p className="label mt-4">{m.label}</p>
-              {isPlaceholder && <p className="label mt-1 text-muted-2">Awaiting your number</p>}
-            </div>
-          );
-        })}
+        {metrics.map((m) => (
+          <div
+            key={m.label}
+            className="group bg-ink px-5 py-8 transition-colors duration-500 hover:bg-ink-2 md:px-7 md:py-10"
+          >
+            <p className="display text-[clamp(2.2rem,5.5vw,4rem)] leading-none text-paper">
+              <span data-count={m.value}>0</span>
+              {m.suffix}
+            </p>
+            <p className="label mt-4">{m.label}</p>
+          </div>
+        ))}
       </div>
     </section>
   );

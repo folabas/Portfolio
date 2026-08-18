@@ -3,52 +3,47 @@ import type { ExperienceEntry } from "./types";
 /**
  * EXPERIENCE TIMELINE
  * ───────────────────
- * These rows are DUMMY DATA, placed here so the timeline animation and layout
- * are complete and reviewable. Every row carries `placeholder: true`, which the
- * UI renders as a visible "PLACEHOLDER" badge — nothing on this page claims to
- * be a real role until you replace it.
+ * Real roles, taken from the CV and confirmed against the project work.
  *
- * To go live: overwrite each entry with your real role, company and dates, then
- * delete the `placeholder` flag. The badge and the disclaimer disappear on their
- * own once no entry is flagged.
+ * Two dates differ between the CV and the brief I was given — both are noted
+ * inline. Correct whichever is right and delete the comment.
  */
 
 export const experience: ExperienceEntry[] = [
   {
-    year: "2023",
-    role: "Role title",
-    company: "Company / Team",
+    year: "2022 — 2023",
+    role: "Frontend Developer",
+    company: "Cactus AI",
     description:
-      "Placeholder row. Replace with what you actually did here — the system you owned, the problem it solved, and what changed because you shipped it.",
-    technologies: ["React", "Node.js", "MongoDB"],
-    placeholder: true,
+      "Built the frontend for a healthcare service-provider platform — multi-step provider onboarding with validation and persistence, on a typed Next.js codebase.",
+    technologies: ["Next.js", "React", "TypeScript", "MongoDB", "Tailwind CSS"],
   },
   {
-    year: "2024",
-    role: "Role title",
-    company: "Company / Team",
+    year: "Dec 2024 — Aug 2025",
+    role: "Mobile Developer (contract)",
+    company: "Olyves Technologies Ltd",
+    // CV lists this as "Dec 2024 – Present"; the brief says the contract ended
+    // Aug 2025. Using the brief.
     description:
-      "Placeholder row. Two sentences is the right length: one for scope, one for outcome.",
-    technologies: ["React Native", "Expo", "Express"],
-    placeholder: true,
+      "Built a cross-platform marketplace connecting artisans with clients, and shipped the trust layer around it: real-time chat, proposal submission, and ratings and reviews.",
+    technologies: ["React Native", "Expo Router", "React Query", "TypeScript", "Firebase"],
   },
   {
-    year: "2025",
-    role: "Role title",
-    company: "Company / Team",
+    year: "Sept 2025 — Present",
+    role: "Full-Stack Developer",
+    company: "iléSure",
     description:
-      "Placeholder row. If a role covered several products, name the one that mattered most rather than listing all of them.",
-    technologies: ["Next.js", "TypeScript", "PostgreSQL"],
-    placeholder: true,
+      "Student housing and roommate matching for Nigerian universities. Property listings, real-time chat over Socket.io, contract e-signing with pdf-lib, Cloudinary document storage, and a tiered subscription for agents and companies.",
+    technologies: ["React Native", "Expo", "TypeScript", "Node.js", "Express", "MongoDB", "Socket.io"],
   },
   {
-    year: "2026",
-    role: "Role title",
-    company: "Company / Team",
+    year: "Oct 2025 — Present",
+    role: "Full-Stack Developer",
+    company: "Gratebridge",
+    // CV says October 2025; the brief said September. Using the CV.
     description:
-      "Placeholder row. Most recent entry — this one gets read the closest, so make it the strongest.",
-    technologies: ["Next.js", "Python", "FastAPI"],
-    placeholder: true,
+      "Shipping across fintech products handling cross-border payments and multi-currency transactions for users in several African countries, including crypto deposits that convert straight into local currency. Built a self-service transaction reporting system that routes issues like undelivered payments to management for investigation and bank escalation — daily support tickets fell from 6–7 to 1–2.",
+    technologies: ["Next.js", "TypeScript", "Node.js", "React", "Tailwind CSS"],
   },
 ];
 

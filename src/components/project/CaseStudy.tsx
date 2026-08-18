@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
 import { ProjectImage } from "@/components/project/ProjectImage";
 import { TextReveal, Reveal } from "@/components/motion/TextReveal";
-import { MagneticButton } from "@/components/motion/MagneticButton";
+import { LinkPreview, LinkRow } from "@/components/ui/LinkPreview";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import type { Project } from "@/data/types";
 
@@ -93,13 +93,42 @@ export function CaseStudy({ project: p, next }: { project: Project; next: Projec
             <Field k="Category" v={p.group} />
           </dl>
 
+          {p.hackathon && (
+            <div className="mt-8 inline-flex flex-wrap items-center gap-3 rounded-full border border-line px-4 py-2">
+              <span className="label label-accent">Hackathon</span>
+              <span className="text-[13px] text-paper">{p.hackathon.name}</span>
+              <span className="label">{p.hackathon.year}</span>
+              {p.hackathon.result && (
+                <span
+                  className="rounded-full px-2.5 py-0.5 font-mono text-[9.5px] uppercase tracking-[0.12em] text-ink"
+                  style={{ backgroundColor: p.accent }}
+                >
+                  {p.hackathon.result}
+                </span>
+              )}
+            </div>
+          )}
+
           {p.links && p.links.length > 0 && (
-            <div className="mt-8 flex flex-wrap gap-3">
-              {p.links.map((l) => (
-                <MagneticButton key={l.href} href={l.href} external variant="ghost" cursor="OPEN ↗">
-                  {l.label}
-                </MagneticButton>
-              ))}
+            <div className="mt-10">
+              <p className="label mb-4">Live</p>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {p.links
+                  .filter((l) => l.kind !== "repo")
+                  .map((l) => (
+                    <LinkPreview key={l.href} href={l.href} label={l.label} accent={p.accent} />
+                  ))}
+              </div>
+
+              {p.links.some((l) => l.kind === "repo") && (
+                <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:max-w-[62%]">
+                  {p.links
+                    .filter((l) => l.kind === "repo")
+                    .map((l) => (
+                      <LinkRow key={l.href} href={l.href} label={l.label} accent={p.accent} />
+                    ))}
+                </div>
+              )}
             </div>
           )}
         </div>

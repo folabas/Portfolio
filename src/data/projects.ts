@@ -45,10 +45,11 @@ export const projects: Project[] = [
     outcome:
       "Live at majorlink.co with the mobile app published on Google Play and the App Store.",
     links: [
-      { label: "majorlink.co", href: "https://majorlink.co" },
+      { label: "majorlink.co", href: "https://majorlink.co", kind: "live" },
       {
         label: "Google Play",
         href: "https://play.google.com/store/apps/details?id=com.olamide81.MajorlinkApp",
+        kind: "repo",
       },
     ],
     hero: {
@@ -93,9 +94,11 @@ export const projects: Project[] = [
     outcome:
       "Deployed across three surfaces: user app and admin dashboard on Vercel, API on Render.",
     links: [
-      { label: "reportam.vercel.app", href: "https://reportam.vercel.app/" },
-      { label: "Admin dashboard", href: "https://reportam-admin.vercel.app/" },
+      { label: "reportam.vercel.app", href: "https://reportam.vercel.app/", kind: "live" },
+      { label: "Admin dashboard", href: "https://reportam-admin.vercel.app/", kind: "live" },
+      { label: "github.com/mojojompe/ReportAm", href: "https://github.com/mojojompe/ReportAm", kind: "repo" },
     ],
+    hackathon: { name: "Build With Oyo", year: "March 2026", result: "3rd overall" },
     hero: { src: img("reportam", "hero"), alt: "ReportAm map of community reports", device: "browser" },
     gallery: [
       { src: img("reportam", "shot-1"), alt: "Report submission with photo and location", device: "phone" },
@@ -193,6 +196,7 @@ export const projects: Project[] = [
     ],
     challenges:
       "Keeping playback authoritative under variable latency without letting a late joiner yank the room back to their own position.",
+    links: [{ label: "connectus.live", href: "https://www.connectus.live/", kind: "live" }],
     hero: { src: img("connectus", "hero"), alt: "ConnectUS synchronised watch room", device: "browser" },
     gallery: [
       { src: img("connectus", "shot-1"), alt: "Watch room with participant video grid and chat", device: "browser" },
@@ -233,7 +237,7 @@ export const projects: Project[] = [
       "Designing the state machines — campaign, slot, escrow — so three products could act on the same entity without racing each other.",
     outcome:
       "Product architecture specification written alongside the build; the marketing site is live on a waitlist.",
-    links: [{ label: "easilypromote.com", href: "https://easilypromote.com" }],
+    links: [{ label: "easilypromote.com", href: "https://easilypromote.com", kind: "live" }],
     hero: {
       src: img("easilypromote", "hero"),
       alt: "EasilyPromote campaign performance dashboard",
@@ -289,6 +293,7 @@ export const projects: Project[] = [
       "Paystack",
       "Dojah",
     ],
+    links: [{ label: "ilesure.com", href: "https://ilesure.com", kind: "live" }],
     challenges:
       "I ran a full read-only security and correctness audit across all six repositories — backend, mobile and four web front-ends — writing up every finding against a file and line reference. The recurring pattern was trust boundaries enforced in one place instead of every place: refresh tokens honoured as access tokens, an admin gate that was a client-side boolean, and two shared-booking flows whose split paid the landlord twice. The audit is the deliverable I am proudest of here.",
     /**
@@ -454,14 +459,15 @@ export const projects: Project[] = [
     role: "Mobile engineering",
     platform: "iOS · Android",
     description:
-      "A cross-platform task marketplace connecting clients who post jobs with vendors who offer services. Vendors submit proposals against a posted task, including price negotiation and supplementary terms.",
+      "A cross-platform mobile marketplace connecting artisans with clients. Clients post work, artisans submit proposals, and both sides carry a rating history — with real-time chat holding the negotiation in one place.",
     features: [
       "Task posting by clients and service offering by vendors",
       "Bidding system with vendor proposals",
       "Price negotiation and supplementary terms on a bid",
       "Push notification and auth infrastructure via Firebase",
     ],
-    stack: ["React Native", "Expo", "TypeScript", "NativeWind", "Firebase"],
+    stack: ["React Native", "Expo Router", "React Query", "TypeScript", "NativeWind", "Firebase"],
+    links: [{ label: "getolyves.com", href: "https://getolyves.com", kind: "live" }],
     hero: { src: img("olyves", "hero"), alt: "Olyves task feed and bid list", device: "phone" },
     gallery: [
       { src: img("olyves", "shot-1"), alt: "Task posting flow", device: "phone" },
@@ -470,50 +476,6 @@ export const projects: Project[] = [
     featured: false,
     accent: "#16c79a",
     status: "verified",
-  },
-
-  /* ────────────────────────────  HERMES  ──────────────────────── */
-  {
-    slug: "hermes",
-    title: "Hermes",
-    tagline: "Transactional email system for the Olyves platform",
-    group: "BUSINESS / ENTERPRISE",
-    disciplines: ["BACKEND", "TOOLS"],
-    typeLine: "INFRASTRUCTURE / EMAIL / DESIGN SYSTEM",
-    year: "2025",
-    role: "Engineering",
-    platform: "Component library · build pipeline",
-    description:
-      "The transactional email layer for Olyves — templates authored as React components, previewed in the browser during development and compiled to the table-based HTML that email clients actually render.",
-    stack: ["React Email", "React", "Node.js"],
-    note: "Version 01 of the email system. Detail expands when the template inventory is supplied.",
-    hero: { src: img("hermes", "hero"), alt: "Hermes email template preview", device: "browser" },
-    gallery: [{ src: img("hermes", "shot-1"), alt: "Compiled transactional email", device: "flat" }],
-    featured: false,
-    accent: "#5b8def",
-    status: "awaiting-assets",
-  },
-
-  /* ───────────────────────────  HERMES 2  ─────────────────────── */
-  {
-    slug: "hermes2",
-    title: "Hermes 02",
-    tagline: "The second iteration of the Olyves email system",
-    group: "BUSINESS / ENTERPRISE",
-    disciplines: ["BACKEND", "TOOLS"],
-    typeLine: "INFRASTRUCTURE / EMAIL / ITERATION",
-    year: "2026",
-    role: "Engineering",
-    platform: "Component library · build pipeline",
-    description:
-      "A rebuild of the Hermes email system, presented alongside version 01 as an evolution rather than a separate product.",
-    stack: ["React Email", "React", "Node.js"],
-    note: "Version 02. The comparison against version 01 fills in once both template sets are supplied.",
-    hero: { src: img("hermes2", "hero"), alt: "Hermes 02 email template preview", device: "browser" },
-    gallery: [{ src: img("hermes2", "shot-1"), alt: "Version 01 and version 02 side by side", device: "flat" }],
-    featured: false,
-    accent: "#5b8def",
-    status: "awaiting-assets",
   },
 
   /* ─────────────────────────  EL.AY BEAUTY  ───────────────────── */
@@ -583,6 +545,14 @@ export const projects: Project[] = [
       "FastAPI service exposing predictions, climate, population, hospital and insight routes",
     ],
     stack: ["Python", "FastAPI", "TensorFlow", "scikit-learn", "pandas", "TensorBoard"],
+    links: [
+      {
+        label: "github.com/folabas/disease_outbreak_prediction",
+        href: "https://github.com/folabas/disease_outbreak_prediction",
+        kind: "repo",
+      },
+    ],
+    hackathon: { name: "Devpost Hackathon", year: "2025 — 2026" },
     challenges:
       "Reconciling NCDC schemas that change between reporting years, and auditing the WHO name mapping rather than trusting a fuzzy join.",
     outcome:
@@ -608,22 +578,75 @@ export const projects: Project[] = [
   /* ─────────────────────  STOCK MARKET PREDICTOR  ──────────────── */
   {
     slug: "stock-market-predictor",
-    title: "Stock Market Predictor",
-    tagline: "Time-series forecasting over historical market data",
+    title: "Stock Market Analysis & Prediction",
+    tagline: "LSTM price forecasting on top of a 50-indicator analysis engine",
     group: "AI / MACHINE LEARNING",
-    disciplines: ["AI / ML"],
-    typeLine: "MACHINE LEARNING / TIME SERIES",
+    disciplines: ["AI / ML", "BACKEND"],
+    typeLine: "MACHINE LEARNING / TIME SERIES / API",
     year: "2025",
     role: "ML engineering",
-    platform: "Python",
+    platform: "Python · FastAPI service · Streamlit app",
     description:
-      "A time-series modelling project over historical market data, covering the pipeline from data through feature construction to evaluation.",
-    stack: ["Python"],
-    note: "The local project directory is currently empty, so nothing here is derived from source. Structure and placeholders are in place — supply the code or screenshots and this case study fills in. Model output is a forecast, not a guarantee.",
+      "A market analysis platform pairing real-time data visualisation with LSTM price prediction. A FastAPI backend computes over fifty technical indicators and runs portfolio optimisation; a Streamlit front-end renders it as live, interactive charts.",
+    problem:
+      "Retail analysis tools tend to give you either indicators or a forecast, rarely both against the same data, and almost never with the portfolio maths attached.",
+    solution:
+      "One pipeline: ingest from several financial data APIs, derive the indicator set, train the sequence model, and expose analysis, prediction and optimisation through a single API the front-end reads from.",
+    features: [
+      "LSTM neural networks for price prediction over historical and real-time series",
+      "50+ technical indicators computed server-side",
+      "Portfolio optimisation using Modern Portfolio Theory, with risk analysis",
+      "Multiple financial data API integrations for real-time and historical data",
+      "Interactive Streamlit app with live updates and dynamic charts",
+    ],
+    stack: ["Python", "TensorFlow", "Keras", "FastAPI", "Streamlit", "pandas", "NumPy"],
+    outcome:
+      "Output is a forecast produced by a model, not investment advice or a guarantee of future price.",
     hero: { src: img("stock-market-predictor", "hero"), alt: "Time series forecast chart", device: "browser" },
     gallery: [{ src: img("stock-market-predictor", "shot-1"), alt: "Model evaluation metrics", device: "flat" }],
     featured: false,
     accent: "#7bd389",
+    status: "verified",
+  },
+
+  /* ──────────────────────────  SIWES TRACKER  ─────────────────── */
+  {
+    slug: "siwes-tracker",
+    title: "SIWES Tracker",
+    tagline: "An industrial-training companion for Lead City students",
+    group: "PRODUCT / STARTUPS",
+    disciplines: ["PRODUCT", "WEB"],
+    typeLine: "EDUCATION / WEB / FULL-STACK",
+    year: "2026",
+    role: "Full-stack engineering",
+    platform: "Web",
+    description:
+      "A companion app for students on SIWES — the Students Industrial Work Experience Scheme, Nigeria's mandatory industrial attachment. Students sign in with their Lead City matric number and keep the whole placement in one place: timetable, daily notes, tasks and a running streak.",
+    problem:
+      "SIWES runs on a paper logbook that gets filled in from memory the week before it is due, which is exactly when the detail worth recording has already been forgotten.",
+    solution:
+      "Move the record to something a student already checks daily — with streaks for consistency, notes tied to the day, and a timetable that makes the placement legible while it is happening rather than afterwards.",
+    features: [
+      "Matric-number sign-in scoped to Lead City University (LCU/UG/…)",
+      "Daily notes and a review of previous entries",
+      "Timetable and to-do management across the placement",
+      "Streaks to keep logging consistent",
+      "Tips surface and in-app chat",
+      "Notifications and a student profile",
+    ],
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
+    links: [
+      { label: "lcu-siwes-tracker.vercel.app", href: "https://lcu-siwes-tracker.vercel.app/", kind: "live" },
+      { label: "github.com/mojojompe/siwes", href: "https://github.com/mojojompe/siwes", kind: "repo" },
+    ],
+    note: "Feature list is derived from the deployed app's route structure and its sign-in screen; the app itself is behind student auth. Deeper detail and screenshots to follow.",
+    hero: { src: img("siwes-tracker", "hero"), alt: "SIWES Tracker dashboard", device: "browser" },
+    gallery: [
+      { src: img("siwes-tracker", "shot-1"), alt: "Daily log and timetable", device: "browser" },
+      { src: img("siwes-tracker", "shot-2"), alt: "Streaks and task list", device: "phone" },
+    ],
+    featured: false,
+    accent: "#5b8def",
     status: "awaiting-assets",
   },
 
@@ -680,6 +703,14 @@ export const projects: Project[] = [
       "Analysis history tracking pipeline health over time",
     ],
     stack: ["Python", "FastAPI", "Model Context Protocol", "SQLAlchemy", "SQLite", "Docker", "GitLab Duo"],
+    links: [
+      {
+        label: "gitlab.com/baskid-group/Baskid-project",
+        href: "https://gitlab.com/baskid-group/Baskid-project",
+        kind: "repo",
+      },
+    ],
+    hackathon: { name: "GitLab AI Hackathon", year: "2025 — 2026" },
     hero: { src: img("ci-guardian", "hero"), alt: "CI Guardian risk score and pipeline analysis", device: "browser" },
     gallery: [
       { src: img("ci-guardian", "shot-1"), alt: "Terminal output of a pipeline risk analysis", device: "flat" },
@@ -702,13 +733,15 @@ export const projects: Project[] = [
     role: "Full-stack engineering",
     platform: "Web",
     description:
-      "The digital platform for Eleemosy, a foundation working across education, community development and relief programmes in Nigeria. Programme content and donation surfaces run through a headless CMS so the team publishes without an engineer.",
+      "The digital platform for the Eleemosy Empowerment and Relief Foundation, a Nigerian non-profit running four programmes: educational support, skills empowerment, emergency relief and community wellbeing. Content and donation surfaces run through a headless CMS so the team publishes without an engineer.",
     features: [
-      "Programme and initiative pages across education, community development and relief",
-      "Donation surface with contextual detail",
+      "Four programme areas: educational support, skills empowerment, emergency relief, community wellbeing",
+      "Donate, partner and volunteer paths, with bank-transfer donation details",
+      "Impact counters and social presence across five channels",
       "CMS-driven content for a non-technical team",
     ],
     stack: ["Next.js", "TypeScript", "Sanity CMS", "Tailwind CSS"],
+    links: [{ label: "eleemosy.com", href: "https://www.eleemosy.com", kind: "live" }],
     hero: { src: img("eleemosy", "hero"), alt: "Eleemosy programmes overview", device: "browser" },
     gallery: [
       { src: img("eleemosy", "shot-1"), alt: "Initiative detail page", device: "browser" },
@@ -739,6 +772,9 @@ export const projects: Project[] = [
       "Evaluation on accuracy, F1, precision, recall and confusion matrix",
     ],
     stack: ["Python", "PyTorch", "ResNet50", "EfficientNet-B3", "torchvision"],
+    links: [
+      { label: "github.com/folabas/tona_model", href: "https://github.com/folabas/tona_model", kind: "repo" },
+    ],
     outcome:
       "Target set at ≥85% test accuracy. Trained weights for both models are checked into the project; measured results are pending write-up.",
     challenges:

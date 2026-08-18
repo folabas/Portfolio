@@ -26,8 +26,11 @@ export const site = {
     { label: "X", href: "https://x.com/", placeholder: true },
   ],
 
-  /** TODO — drop a PDF at public/basit-olajide-cv.pdf */
-  resume: { label: "Résumé", href: "/basit-olajide-cv.pdf", placeholder: true },
+  resume: {
+    label: "Résumé",
+    href: "https://res.cloudinary.com/daptfl7az/raw/upload/v1787071460/BASIT_OLAJIDE_CV.docx",
+    placeholder: false,
+  },
 } as const;
 
 export const hero = {
@@ -56,6 +59,7 @@ export const chapters = [
   { id: "archive", label: "ARCHIVE" },
   { id: "systems", label: "SYSTEMS" },
   { id: "experience", label: "EXPERIENCE" },
+  { id: "credentials", label: "CREDENTIALS" },
   { id: "about", label: "ABOUT" },
   { id: "contact", label: "CONTACT" },
 ] as const;
@@ -65,6 +69,7 @@ export const nav = [
   { label: "Journal", href: "/journal" },
   { label: "Systems", href: "/#systems" },
   { label: "Experience", href: "/#experience" },
+  { label: "Credentials", href: "/#credentials" },
   { label: "About", href: "/#about" },
   { label: "Contact", href: "/#contact" },
 ] as const;
@@ -73,14 +78,15 @@ export const about = {
   headline: ["Computer science", "student by day.", "Shipping", "production", "software", "the rest of it."],
   accentLines: [2],
   bio: [
-    "I'm a computer science student at Lead City University in Ibadan, currently holding a first class, and I spend most of my time building things that go into production.",
+    "I'm a computer science student at Lead City University in Ibadan, holding a first class at 4.48/5.0, and I spend most of my time building things that go into production.",
     "The work runs across three lanes that keep feeding each other: consumer fintech — wallets, gift card exchange, savings, payment rails; marketplaces with real verification and money in them; and machine learning, where I care most about the unglamorous part upstream of the model.",
     "I also run security and correctness audits on my own systems. On iléSure that meant reading all six repositories end to end and writing up every finding against a file and line reference — the fastest way I know to learn where a system actually breaks.",
   ],
   facts: [
     { k: "Based in", v: "Ibadan, Nigeria" },
-    { k: "Studying", v: "BSc Computer Science, Lead City University" },
+    { k: "Studying", v: "BSc Computer Science, Lead City University — First Class (4.48/5.0)" },
     { k: "Focus", v: "Fintech · Marketplaces · Applied ML" },
+    { k: "Currently", v: "Full-Stack Developer at Gratebridge" },
     { k: "Also", v: "Google Developer Student Club — workshops on Python & data structures" },
   ],
   interests: ["Technology", "Fashion", "Music", "Gaming"],
@@ -104,8 +110,8 @@ export const metrics = [
     suffix: "",
     computed: true,
   },
-  { value: 0, label: "Products shipped", suffix: "", placeholder: true },
-  { value: 0, label: "Years building", suffix: "", placeholder: true },
+  { value: 10, label: "Products shipped", suffix: "+" },
+  { value: 4, label: "Years building", suffix: "+" },
 ] as const;
 
 export const footerCta = {

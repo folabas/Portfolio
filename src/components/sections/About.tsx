@@ -49,7 +49,7 @@ export function About() {
   return (
     <section id="about" className="relative px-5 py-[12vh] md:px-10" aria-label="About">
       <div className="mx-auto max-w-[1600px]">
-        <ChapterLabel index={6} label="About" id="about" />
+        <ChapterLabel index={7} label="About" id="about" />
 
         <div className="mt-10 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
           {/* left — statement */}
