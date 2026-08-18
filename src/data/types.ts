@@ -17,8 +17,22 @@ export interface Shot {
   /** Replace this path with a real screenshot and every surface updates. */
   src: string;
   alt: string;
-  /** Frame the image is composed into. */
-  device?: "browser" | "phone" | "laptop" | "tablet" | "flat";
+  /**
+   * Frame the image is composed into.
+   *
+   * `bare` means no frame at all — for images that already carry their own
+   * device rendering (a supplied mockup composite). Wrapping one of those in a
+   * phone or browser chrome puts a frame inside a frame.
+   */
+  device?: "browser" | "phone" | "laptop" | "tablet" | "flat" | "bare";
+  /**
+   * Intrinsic pixel size. Only needed when the image is not the standard
+   * 1600×1000 (or 760×1520 for a phone) that the generated placeholders use —
+   * a supplied screenshot with a different ratio will otherwise be stretched to
+   * whatever ratio the defaults imply.
+   */
+  width?: number;
+  height?: number;
   caption?: string;
 }
 

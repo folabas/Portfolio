@@ -22,6 +22,9 @@ const FRAME: Record<NonNullable<Shot["device"]>, string> = {
   laptop: "rounded-lg border border-line bg-ink-2 p-[5px]",
   tablet: "rounded-[1.4rem] border border-line bg-ink-2 p-[6px]",
   flat: "rounded-lg border border-line bg-ink-2",
+  // No chrome and no background: the image already renders its own devices, and
+  // supplied mockups are usually transparent PNGs meant to float on the page.
+  bare: "",
 };
 
 const RADIUS: Record<NonNullable<Shot["device"]>, string> = {
@@ -30,6 +33,7 @@ const RADIUS: Record<NonNullable<Shot["device"]>, string> = {
   laptop: "rounded-md",
   tablet: "rounded-[1.1rem]",
   flat: "rounded-[7px]",
+  bare: "",
 };
 
 export function ProjectImage({
@@ -120,8 +124,8 @@ export function ProjectImage({
         <Image
           src={shot.src}
           alt={shot.alt}
-          width={isPhone ? 760 : 1600}
-          height={isPhone ? 1520 : 1000}
+          width={shot.width ?? (isPhone ? 760 : 1600)}
+          height={shot.height ?? (isPhone ? 1520 : 1000)}
           sizes={sizes}
           priority={priority}
           loading={priority ? undefined : "lazy"}

@@ -261,19 +261,21 @@ export const projects: Project[] = [
     role: "Full-stack engineering & security audit",
     platform: "iOS · Android · four web apps · API",
     description:
-      "A Nigerian student-housing marketplace. Agents, landlords and companies list properties; students book, pay in Naira, verify identity, sign a tenancy agreement and match with roommates. The name is Yoruba for “safe home”, which is also the product requirement.",
+      "A Nigerian student-housing marketplace — “Your Sure Home Anywhere”. Agents, landlords and companies list properties; students pick their campus corridor, book, pay in Naira, verify identity, sign a tenancy agreement and match with roommates. The name is Yoruba for “safe home”, which is also the product requirement.",
     problem:
       "Off-campus housing around Nigerian universities runs on word of mouth and forwarded messages. Students cannot tell a real listing from a fake one, roommate arrangements are made blind, and landlords have no signal of actual demand.",
     solution:
       "Verification as the spine of the product: agents clear NIN, BVN, proof of ownership and a live selfie before a listing goes live; companies additionally clear CAC and TIN. Payment amounts are computed server-side in every flow, and tenancy agreements are signed and issued as PDFs.",
     features: [
+      "Campus-first onboarding — pick your school and see only that corridor: Lead City, University of Ibadan, LAUTECH, Polytechnic Ibadan",
       "Tiered verification for agents, landlords and registered companies",
-      "Listings, applications, waitlists and bookings",
+      "Listings, applications, waitlists and bookings across Toll Gate, Bodija, Soka, New Garage and Akala-Express",
       "Paystack payments in NGN with server-computed amounts",
       "Dojah identity verification",
       "E-signature tenancy agreements issued as PDFs",
       "Roommate compatibility matching and shared bookings",
       "In-app chat between students, agents and companies",
+      "Agent-facing web console and a public marketing site with early-access capture",
     ],
     stack: [
       "React Native",
@@ -289,14 +291,31 @@ export const projects: Project[] = [
     ],
     challenges:
       "I ran a full read-only security and correctness audit across all six repositories — backend, mobile and four web front-ends — writing up every finding against a file and line reference. The recurring pattern was trust boundaries enforced in one place instead of every place: refresh tokens honoured as access tokens, an admin gate that was a client-side boolean, and two shared-booking flows whose split paid the landlord twice. The audit is the deliverable I am proudest of here.",
-    hero: { src: img("ilesure", "hero"), alt: "iléSure listing detail on mobile", device: "phone" },
+    /**
+     * Real supplied mockup — a transparent PNG that already renders its own
+     * devices, so it takes `bare` (no second frame) and its own dimensions.
+     */
+    hero: {
+      src: "/images/projects/ilesure/app-mockup.png",
+      alt: "iléSure app: splash screen, Match & Move In onboarding, and campus selection",
+      device: "bare",
+      width: 1920,
+      height: 1440,
+    },
     gallery: [
-      { src: img("ilesure", "shot-1"), alt: "Property listing browse and filters", device: "phone" },
-      { src: img("ilesure", "shot-2"), alt: "Booking and payment flow", device: "phone" },
+      /**
+       * TODO — drop the marketing-site screenshot at
+       * public/images/projects/ilesure/website.png and swap this entry to:
+       *   { src: "/images/projects/ilesure/website.png",
+       *     alt: "iléSure marketing site — Find Your Sure Home Near Campus",
+       *     device: "browser", width: <w>, height: <h> }
+       */
       { src: img("ilesure", "shot-3"), alt: "Agent verification console", device: "browser" },
+      { src: img("ilesure", "shot-2"), alt: "Booking and payment flow", device: "phone" },
     ],
     featured: true,
-    accent: "#f0894b",
+    /** Sampled from the supplied mockup — the iléSure wordmark gold. */
+    accent: "#e2ad02",
     status: "verified",
   },
 
