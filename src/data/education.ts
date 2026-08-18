@@ -17,7 +17,7 @@ export interface Credential {
 export const education: Credential[] = [
   {
     kind: "degree",
-    title: "BSc Computer Science — First Class (4.48 / 5.0)",
+    title: "BSc Computer Science",
     issuer: "Lead City University, Oyo State, Nigeria",
     year: "Sept 2023 — Present",
     detail:

@@ -78,13 +78,13 @@ export const about = {
   headline: ["Computer science", "student by day.", "Shipping", "production", "software", "the rest of it."],
   accentLines: [2],
   bio: [
-    "I'm a computer science student at Lead City University in Ibadan, holding a first class at 4.48/5.0, and I spend most of my time building things that go into production.",
+    "I'm a computer science student at Lead City University in Ibadan, and I spend most of my time building things that go into production.",
     "The work runs across three lanes that keep feeding each other: consumer fintech — wallets, gift card exchange, savings, payment rails; marketplaces with real verification and money in them; and machine learning, where I care most about the unglamorous part upstream of the model.",
     "I also run security and correctness audits on my own systems. On iléSure that meant reading all six repositories end to end and writing up every finding against a file and line reference — the fastest way I know to learn where a system actually breaks.",
   ],
   facts: [
     { k: "Based in", v: "Ibadan, Nigeria" },
-    { k: "Studying", v: "BSc Computer Science, Lead City University — First Class (4.48/5.0)" },
+    { k: "Studying", v: "BSc Computer Science, Lead City University" },
     { k: "Focus", v: "Fintech · Marketplaces · Applied ML" },
     { k: "Currently", v: "Full-Stack Developer at Gratebridge" },
     { k: "Also", v: "Google Developer Student Club — workshops on Python & data structures" },
