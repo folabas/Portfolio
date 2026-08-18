@@ -1,0 +1,78 @@
+export type Discipline =
+  | "PRODUCT" | "MOBILE" | "WEB" | "FINTECH" | "AI / ML" | "BACKEND" | "TOOLS" | "STRATEGY";
+
+export type Group =
+  | "PRODUCT / STARTUPS"
+  | "FINTECH / FINANCIAL SYSTEMS"
+  | "BUSINESS / ENTERPRISE"
+  | "AI / MACHINE LEARNING"
+  | "OTHER PRODUCTS";
+
+export interface ProjectLink {
+  label: string;
+  href: string;
+}
+
+export interface Shot {
+  /** Replace this path with a real screenshot and every surface updates. */
+  src: string;
+  alt: string;
+  /** Frame the image is composed into. */
+  device?: "browser" | "phone" | "laptop" | "tablet" | "flat";
+  caption?: string;
+}
+
+export interface Project {
+  slug: string;
+  title: string;
+  /** Short line under the title in listings. */
+  tagline: string;
+  group: Group;
+  disciplines: Discipline[];
+  /** Shown as the type line: "FINTECH / MOBILE / WEB" */
+  typeLine: string;
+  year: string;
+  role: string;
+  platform: string;
+  /** 1–3 sentences. Factual only. */
+  description: string;
+  problem?: string;
+  solution?: string;
+  features?: string[];
+  stack: string[];
+  challenges?: string;
+  outcome?: string;
+  links?: ProjectLink[];
+  hero: Shot;
+  gallery: Shot[];
+  featured: boolean;
+  /** Per-project accent. The global system still dominates. */
+  accent: string;
+  /**
+   * "verified"       — description derives from the repository or the live product.
+   * "awaiting-assets" — structure is in place; copy is deliberately thin until
+   *                     screenshots and product detail are supplied.
+   */
+  status: "verified" | "awaiting-assets";
+  /** Rendered as a visible note on the case study when present. */
+  note?: string;
+}
+
+export interface ExperienceEntry {
+  year: string;
+  role: string;
+  company: string;
+  description: string;
+  technologies: string[];
+  /** Dummy rows are badged in the UI so nothing reads as a real claim. */
+  placeholder?: boolean;
+}
+
+export interface TechNode {
+  name: string;
+  cluster: string;
+  detail: string;
+  /** Normalised 0–1 coordinates inside the constellation field. */
+  x: number;
+  y: number;
+}

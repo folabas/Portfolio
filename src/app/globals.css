@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN TOKENS — dark-first, one accent, thin lines
+   ============================================================ */
+@theme {
+  --color-ink:        #08080a;
+  --color-ink-2:      #0d0d10;
+  --color-ink-3:      #141418;
+  --color-paper:      #edede7;
+  --color-muted:      #83837d;
+  --color-muted-2:    #56564f;
+  --color-accent:     #d6f94c;
+  --color-line:       rgba(237, 237, 231, 0.10);
+  --color-line-2:     rgba(237, 237, 231, 0.05);
+
+  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-sans:    var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    var(--font-mono-jb), ui-monospace, monospace;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+:root {
+  color-scheme: dark;
+  --accent: #d6f94c;
+}
+
+* { min-width: 0; }
+
+html {
+  background: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Lenis drives scroll; native smooth would fight it */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+body {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  font-feature-settings: "ss01", "cv01";
+}
+
+::selection { background: var(--color-accent); color: #08080a; }
+
+/* Custom cursor replaces the native one only where it is actually active */
+body[data-cursor="on"],
+body[data-cursor="on"] a,
+body[data-cursor="on"] button,
+body[data-cursor="on"] [role="button"] { cursor: none; }
+
+/* Focus states must survive the motion layer */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+/* ============================================================
+   TYPE SCALE
+   ============================================================ */
+.display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+.display-fluid { font-size: clamp(2.75rem, 12.5vw, 12rem); }
+.display-mid    { font-size: clamp(2.25rem, 7.5vw, 6.5rem); }
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  font-weight: 500;
+}
+
+.label-accent { color: var(--color-accent); }
+
+.body-lg {
+  font-size: clamp(1rem, 1.35vw, 1.1875rem);
+  line-height: 1.6;
+  color: #b9b9b2;
+  letter-spacing: -0.011em;
+}
+
+/* ============================================================
+   MOTION PRIMITIVES
+   ============================================================ */
+
+/* Masked line reveal — the element is clipped by its own overflow parent */
+.reveal-mask { overflow: hidden; display: block; }
+.reveal-line {
+  display: block;
+  will-change: transform;
+  transform: translate3d(0, 105%, 0);
+}
+
+/* Images enter at 1.08 and settle to 1 */
+.img-settle { will-change: transform, opacity; }
+
+@keyframes grain-shift {
+  0%,100% { transform: translate3d(0,0,0); }
+  10% { transform: translate3d(-2%,-3%,0); }
+  30% { transform: translate3d(3%,-2%,0); }
+  50% { transform: translate3d(-1%,2%,0); }
+  70% { transform: translate3d(2%,3%,0); }
+  90% { transform: translate3d(-3%,1%,0); }
+}
+
+@keyframes marquee-x {
+  from { transform: translate3d(0,0,0); }
+  to   { transform: translate3d(-50%,0,0); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-x 42s linear infinite;
+  will-change: transform;
+}
+
+/* Thin editorial rules */
+.rule { height: 1px; background: var(--color-line); }
+
+/* Restrained glass — used in at most two places */
+.glass {
+  background: rgba(20, 20, 24, 0.55);
+  backdrop-filter: blur(14px) saturate(120%);
+  border: 1px solid var(--color-line);
+}
+
+/* Hide scrollbar on horizontal rails without losing keyboard scroll */
+.no-bar { scrollbar-width: none; }
+.no-bar::-webkit-scrollbar { display: none; }
+
+/* ============================================================
+   REDUCED MOTION — kill transforms, keep content visible
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-line { transform: none !important; }
+  .marquee-track { animation: none !important; }
+}
