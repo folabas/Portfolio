@@ -56,8 +56,37 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${archivo.variable} ${inter.variable} ${mono.variable}`}>
+    <html
+      lang="en"
+      className={`${archivo.variable} ${inter.variable} ${mono.variable}`}
+      // The script below stamps a class on <html> before React hydrates.
+      suppressHydrationWarning
+    >
       <body className="antialiased">
+        {/*
+          PRE-PAINT GUARD — must stay the first node in <body>.
+
+          The intro curtain is server-rendered so a first visit never flashes raw
+          page content. But only the client knows whether the intro already
+          played this session, and deciding that in React means the curtain
+          paints and is then torn down on hydration — a visible flash of "000"
+          on every repeat visit.
+
+          This is a synchronous, blocking script sitting ahead of the curtain in
+          document order, so the class lands before the browser paints anything
+          and the rule in globals.css suppresses the curtain outright.
+
+          Raw <script>, not next/script: `beforeInteractive` renders as a direct
+          child of <html>, which is invalid HTML and throws a hydration error.
+          React only executes this during SSR, which is exactly the scope wanted
+          — it must run on document load and never again.
+        */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(sessionStorage.getItem('intro-seen'))document.documentElement.classList.add('intro-seen')}catch(e){}",
+          }}
+        />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[10000] focus:rounded-full focus:bg-accent focus:px-5 focus:py-2 focus:text-[13px] focus:font-medium focus:text-ink"

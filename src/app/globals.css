@@ -150,6 +150,20 @@ body[data-cursor="on"] [role="button"] { cursor: none; }
 .no-bar::-webkit-scrollbar { display: none; }
 
 /* ============================================================
+   INTRO CURTAIN
+   The curtain is server-rendered so a first visit never flashes raw page
+   content. These two rules suppress it before paint — on a repeat visit
+   (class stamped by the inline script in layout.tsx) and whenever the user
+   has asked for reduced motion. Both decisions happen in CSS, so neither
+   depends on React having hydrated.
+   ============================================================ */
+.intro-seen #intro-curtain { display: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  #intro-curtain { display: none !important; }
+}
+
+/* ============================================================
    REDUCED MOTION — kill transforms, keep content visible
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
