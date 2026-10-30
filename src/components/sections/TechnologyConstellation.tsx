@@ -16,7 +16,7 @@ import { clusters, techEdges, techNodes } from "@/data/tech";
  * Hover state is the only React state — the drift is CSS, and the highlight is
  * a class change, so moving the pointer across the field costs no re-layout.
  */
-export function TechnologyConstellation() {
+export function TechnologyConstellation({ chapter = false }: { chapter?: boolean } = {}) {
   const [active, setActive] = useState<string | null>(null);
   const reduced = useReducedMotion();
 
@@ -36,7 +36,15 @@ export function TechnologyConstellation() {
   return (
     <section id="stack" className="relative px-5 py-[12vh] md:px-10" aria-label="Stack">
       <div className="mx-auto max-w-[1600px]">
-        <ChapterLabel index={4} label="Stack" id="stack" />
+        {/* Only the home page has chapters; /stack shows a plain rule. */}
+        {chapter ? (
+          <ChapterLabel index={4} label="Stack" id="stack" />
+        ) : (
+          <div className="flex items-center gap-4">
+            <span className="h-px w-10 bg-line" />
+            <span className="label">Stack</span>
+          </div>
+        )}
 
         <div className="mt-8 flex flex-wrap items-end justify-between gap-8 border-b border-line pb-8">
           <h2 className="display max-w-[14ch] text-[clamp(1.9rem,5vw,4rem)] text-paper">

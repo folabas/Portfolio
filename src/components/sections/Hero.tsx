@@ -46,7 +46,7 @@ export function Hero() {
           {/* gap-4, not gap-3: the magnetic pull is up to ~25px, and at 12px
               two pills can visibly touch as the pointer passes between them. */}
           <Reveal className="flex flex-wrap items-center gap-4" delay={0.1}>
-            <MagneticButton href="/#projects" cursor="VIEW WORK">
+            <MagneticButton href="/projects" cursor="VIEW WORK">
               See the work
             </MagneticButton>
             <MagneticButton href={`mailto:${site.email}`} external variant="ghost" cursor="SAY HELLO">

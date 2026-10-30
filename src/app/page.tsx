@@ -24,7 +24,7 @@ export default function Home() {
       <Hero />
       <Projects />
       <Statement />
-      <TechnologyConstellation />
+      <TechnologyConstellation chapter />
       <Metrics />
       <FooterCTA chapter />
     </>
