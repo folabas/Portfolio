@@ -6,6 +6,7 @@ import { ChapterLabel } from "@/components/layout/ScrollProgress";
 import { TextReveal } from "@/components/motion/TextReveal";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { getLenis } from "@/lib/lenis";
 import { footerCta, site } from "@/data/site";
 
 /**
@@ -36,6 +37,12 @@ export function FooterCTA({ chapter = false }: { chapter?: boolean } = {}) {
     el.addEventListener("pointermove", on);
     return () => el.removeEventListener("pointermove", on);
   }, [reduced]);
+
+  const toTop = () => {
+    const lenis = getLenis();
+    if (lenis) lenis.scrollTo(0);
+    else window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
+  };
 
   const copyEmail = async () => {
     try {
@@ -162,9 +169,15 @@ export function FooterCTA({ chapter = false }: { chapter?: boolean } = {}) {
             © {site.year} {site.name}
           </p>
           <p className="label">Built with Next.js · GSAP · Lenis · Three.js</p>
-          <a href="#intro" className="label transition-colors hover:text-accent" data-cursor="TOP">
+          {/*
+            A button, not an <a href="#intro">: #intro only exists on the home
+            page, so the anchor silently did nothing on every other route. Lenis
+            owns the scroll position, so ask it rather than the window — and fall
+            back to the window when Lenis is not running (reduced motion).
+          */}
+          <button type="button" onClick={toTop} className="label transition-colors hover:text-accent" data-cursor="TOP">
             Back to top ↑
-          </a>
+          </button>
         </div>
       </div>
     </footer>

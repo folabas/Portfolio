@@ -58,7 +58,7 @@ export function CaseStudy({ project: p, next }: { project: Project; next: Projec
 
         <div className="relative mx-auto max-w-[1600px]">
           <Link
-            href="/#work"
+            href="/projects"
             data-cursor="BACK"
             className="label inline-flex items-center gap-2 transition-colors hover:text-accent"
           >

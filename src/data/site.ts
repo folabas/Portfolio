@@ -68,17 +68,23 @@ export const chapters = [
 
 /**
  * NAVIGATION
- * `primary` links sit in the top bar on desktop. Everything appears in the
- * fullscreen menu — the bar stays short so it never competes with the type.
+ * ──────────
+ * Every entry is its own route. None of these may be an in-page anchor:
+ * a nav item that scrolls the current page instead of navigating reads as a
+ * broken link, because the thing it promised (another screen) never arrives.
+ * In-page anchors belong to buttons inside a page, not to the nav.
+ *
+ * `primary` links sit in the top bar on desktop; all of them are in the
+ * fullscreen menu. The bar stays short so it never competes with the type.
  */
 export const nav = [
-  { label: "Projects", href: "/#projects", primary: true },
+  { label: "Projects", href: "/projects", primary: true },
   { label: "Side projects", href: "/side-projects", primary: false },
   { label: "Personal projects", href: "/personal-projects", primary: false },
-  { label: "Stack", href: "/#stack", primary: false },
+  { label: "Stack", href: "/stack", primary: false },
   { label: "About", href: "/about", primary: true },
   { label: "Journal", href: "/journal", primary: false },
-  { label: "Contact", href: "/#contact", primary: true },
+  { label: "Contact", href: "/contact", primary: true },
 ] as const;
 
 export const about = {
