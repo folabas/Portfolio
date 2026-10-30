@@ -19,7 +19,7 @@ export const education: Credential[] = [
     kind: "degree",
     title: "BSc Computer Science",
     issuer: "Lead City University, Oyo State, Nigeria",
-    year: "Sept 2023 — Present",
+    year: "Sept 2023–Present",
     detail:
       "Artificial Intelligence · Database Management · Object-Oriented Programming · Web Computing · Computer Architecture · Digital Logic Systems",
   },
@@ -52,11 +52,11 @@ export const hackathons = [
     project: "ReportAm",
     slug: "reportam",
     blurb:
-      "A civic-tech platform letting Oyo State residents report real-time incidents and infrastructure issues — potholes, bad roads, waste — directly to government.",
+      "A civic-tech platform letting Oyo State residents report real-time incidents and infrastructure issues (potholes, bad roads, waste) directly to government.",
   },
   {
     name: "GitLab AI Hackathon",
-    year: "2025 — 2026",
+    year: "2025–2026",
     project: "CI Guardian",
     slug: "ci-guardian",
     blurb:
@@ -64,7 +64,7 @@ export const hackathons = [
   },
   {
     name: "Devpost Hackathon",
-    year: "2025 — 2026",
+    year: "2025–2026",
     project: "Disease Outbreak Prediction",
     slug: "disease-outbreak-prediction",
     blurb:

@@ -43,7 +43,7 @@ export function JournalIndex() {
 
         <Reveal className="mt-8 max-w-[58ch]" delay={0.1}>
           <p className="body-lg">
-            Fintech regulation, payment infrastructure and the engineering underneath —
+            Fintech regulation, payment infrastructure and the engineering underneath,
             written from the position of someone shipping into it rather than reporting on it.
           </p>
         </Reveal>

@@ -40,7 +40,7 @@ export const posts: Post[] = [
     slug: "when-the-cooling-fails",
     title: "When the cooling fails",
     standfirst:
-      "Namecheap took more than 5,000 servers offline to save the hardware. The interesting part is not the outage — it is which of your dependencies you have never actually named.",
+      "Namecheap took more than 5,000 servers offline to save the hardware. The interesting part is not the outage. It is which of your dependencies you have never actually named.",
     date: "2026-08-16",
     readingMinutes: 5,
     topic: "Infrastructure",
@@ -53,12 +53,12 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        text: "Hosting, EasyWP, Private Email, DNS management, URL redirect management and — awkwardly — the support helpdesk all went with it. DNS zone resolution kept working, which is the single detail that saved a lot of people from a much worse day: domains still resolved, so anything hosted elsewhere stayed up.",
+        text: "Hosting, EasyWP, Private Email, DNS management, URL redirect management and, awkwardly, the support helpdesk all went with it. DNS zone resolution kept working, which is the single detail that saved a lot of people from a much worse day: domains still resolved, so anything hosted elsewhere stayed up.",
       },
       { t: "h", text: "The failure was thermal, not digital" },
       {
         t: "p",
-        text: "There is a particular kind of engineer confidence that comes from having good backups, good CI, and a tidy deployment pipeline. None of that is a defence against a building getting too warm. The shutdown was correct — hardware that overheats does not come back — but it was a physical decision that propagated straight through every abstraction layer above it.",
+        text: "There is a particular kind of engineer confidence that comes from having good backups, good CI, and a tidy deployment pipeline. None of that is a defence against a building getting too warm. The shutdown was correct, since hardware that overheats does not come back, but it was a physical decision that propagated straight through every abstraction layer above it.",
       },
       {
         t: "p",
@@ -67,16 +67,16 @@ export const posts: Post[] = [
       { t: "h", text: "Name your single points of failure out loud" },
       {
         t: "p",
-        text: "The useful exercise after an incident like this is not to switch providers. It is to write down, without looking at any code, every third party that can take your product down — and then check the list against reality. Most of us are wrong in the same two ways: we forget the ones we did not choose, and we forget the ones we chose years ago.",
+        text: "The useful exercise after an incident like this is not to switch providers. It is to write down, without looking at any code, every third party that can take your product down, and then check the list against reality. Most of us are wrong in the same two ways: we forget the ones we did not choose, and we forget the ones we chose years ago.",
       },
       {
         t: "list",
         items: [
-          "Registrar and DNS — often the same vendor, which is the concentration Namecheap customers just met",
+          "Registrar and DNS, often the same vendor, which is the concentration Namecheap customers just met",
           "Where your email actually sends from, including password resets and OTPs",
           "Your identity or KYC provider, which is a hard dependency on any regulated onboarding flow",
           "Your payment processor, and separately its settlement bank",
-          "Your media and asset CDN — usually invisible until images stop loading in production",
+          "Your media and asset CDN, usually invisible until images stop loading in production",
           "Your status page, which should never share infrastructure with the thing it reports on",
         ],
       },
@@ -87,7 +87,7 @@ export const posts: Post[] = [
       { t: "h", text: "What I actually changed" },
       {
         t: "p",
-        text: "Splitting registrar from DNS from hosting is cheap and mostly a one-afternoon job. Moving transactional email off the same vendor as hosting is cheap. Genuine multi-region redundancy is not cheap, and for most products at most stages it is not the right trade — but knowing that you have chosen to accept the risk is different from discovering it during a storm.",
+        text: "Splitting registrar from DNS from hosting is cheap and mostly a one-afternoon job. Moving transactional email off the same vendor as hosting is cheap. Genuine multi-region redundancy is not cheap, and for most products at most stages it is not the right trade. But knowing that you have chosen to accept the risk is different from discovering it during a storm.",
       },
       {
         t: "p",
@@ -96,11 +96,11 @@ export const posts: Post[] = [
     ],
     sources: [
       {
-        label: "Engadget — Hosting provider Namecheap is down after data center cooling failure",
+        label: "Engadget: Hosting provider Namecheap is down after data center cooling failure",
         href: "https://www.engadget.com/2236616/hosting-provider-namecheap-is-down-after-data-center-cooling-failure/",
       },
       {
-        label: "IncidentHub — The August 13, 2026 Namecheap Outage",
+        label: "IncidentHub: The August 13, 2026 Namecheap Outage",
         href: "https://blog.incidenthub.cloud/namecheap-outage-aug-13-2026",
       },
       { label: "Namecheap status updates", href: "https://www.namecheap.com/status-updates/" },
@@ -121,7 +121,7 @@ export const posts: Post[] = [
     body: [
       {
         t: "p",
-        text: "For most of the last decade, Nigerian fintech regulation arrived as guidance you could absorb with a compliance hire and a few product tweaks. 2026 is not that. The rules the Central Bank of Nigeria issued between March and June carry two hard dates — 31 December 2026 and 1 January 2027 — and they change company structure, not just user flows.",
+        text: "For most of the last decade, Nigerian fintech regulation arrived as guidance you could absorb with a compliance hire and a few product tweaks. 2026 is not that. The rules the Central Bank of Nigeria issued between March and June carry two hard dates, 31 December 2026 and 1 January 2027, and they change company structure, not just user flows.",
       },
       { t: "h", text: "Ring-fencing is the headline" },
       {
@@ -130,7 +130,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        text: "That is an engineering problem long before it is a legal one. Shared services that quietly reach across product boundaries — one wallet ledger, one KYC record, one risk engine — are exactly what a ring-fence is designed to separate. If your architecture assumed a single trust domain, you are looking at real work.",
+        text: "That is an engineering problem long before it is a legal one. Shared services that quietly reach across product boundaries (one wallet ledger, one KYC record, one risk engine) are exactly what a ring-fence is designed to separate. If your architecture assumed a single trust domain, you are looking at real work.",
       },
       { t: "h", text: "Market share as a capped variable" },
       {
@@ -144,7 +144,7 @@ export const posts: Post[] = [
       { t: "h", text: "Open banking finally has a date" },
       {
         t: "p",
-        text: "Nigeria published Africa's first open banking regulatory framework in February 2021 and finalised operational guidelines in March 2023. The rollout then slipped. The CBN's February 2026 policy report commits to a phased rollout during 2026 — alongside AML automation, APP fraud rules and cash policy changes all landing in the same window.",
+        text: "Nigeria published Africa's first open banking regulatory framework in February 2021 and finalised operational guidelines in March 2023. The rollout then slipped. The CBN's February 2026 policy report commits to a phased rollout during 2026, alongside AML automation, APP fraud rules and cash policy changes all landing in the same window.",
       },
       {
         t: "note",
@@ -153,38 +153,38 @@ export const posts: Post[] = [
       { t: "h", text: "The sandbox is a real option" },
       {
         t: "p",
-        text: "The CBN opened the second cohort of its Regulatory Sandbox Programme on 12 August 2026, with applications closing 31 August. It includes a Virtual Asset Service Provider track covering stablecoins, payment and settlement services, custody and wallets — which is the first time a lot of crypto-adjacent product work in Nigeria has had a legible supervised path rather than an ambiguous one.",
+        text: "The CBN opened the second cohort of its Regulatory Sandbox Programme on 12 August 2026, with applications closing 31 August. It includes a Virtual Asset Service Provider track covering stablecoins, payment and settlement services, custody and wallets. That is the first time a lot of crypto-adjacent product work in Nigeria has had a legible supervised path rather than an ambiguous one.",
       },
       { t: "h", text: "What I would do with two quarters left" },
       {
         t: "list",
         items: [
-          "Draw the trust boundaries you already have, honestly, before drawing the ones the ring-fence requires — most teams find the two diagrams are further apart than expected",
+          "Draw the trust boundaries you already have, honestly, before drawing the ones the ring-fence requires; most teams find the two diagrams are further apart than expected",
           "Instrument market-share reporting now; monthly filings against numbers you cannot currently produce is its own outage",
-          "Treat open banking consent as a product surface with real UX, not an API checkbox — it is the part users will actually see",
+          "Treat open banking consent as a product surface with real UX, not an API checkbox, because it is the part users will actually see",
           "If any part of your roadmap touches stablecoins or custody, the sandbox track is the cheapest way to find out what supervised looks like",
         ],
       },
       {
         t: "p",
-        text: "None of this is an argument that the rules are right or wrong. It is an argument that they are dated, specific, and structural — and that the teams treating December as a compliance sprint rather than an architecture decision are the ones who will be rewriting in January.",
+        text: "None of this is an argument that the rules are right or wrong. It is an argument that they are dated, specific, and structural, and that the teams treating December as a compliance sprint rather than an architecture decision are the ones who will be rewriting in January.",
       },
     ],
     sources: [
       {
-        label: "TechAfrica News — CBN opens regulatory sandbox for Nigeria's virtual asset and fintech sector",
+        label: "TechAfrica News: CBN opens regulatory sandbox for Nigeria's virtual asset and fintech sector",
         href: "https://techafricanews.com/2026/08/12/cbn-opens-regulatory-sandbox-for-nigerias-virtual-asset-and-fintech-sector/",
       },
       {
-        label: "TechCabal Insights — The CBN's plan to make regulation work for fintechs",
+        label: "TechCabal Insights: The CBN's plan to make regulation work for fintechs",
         href: "https://insights.techcabal.com/the-cbn-has-a-plan-to-make-regulation-work-for-fintechs-here-is-what-it-looks-like/",
       },
       {
-        label: "BusinessDay — As Nigeria prepares for the open banking rollout",
+        label: "BusinessDay: As Nigeria prepares for the open banking rollout",
         href: "https://businessday.ng/opinion/article/as-nigeria-prepares-for-the-open-banking-rollout/",
       },
       {
-        label: "Technext — CBN H1 2026 rules: the banks and fintechs most affected",
+        label: "Technext: CBN H1 2026 rules: the banks and fintechs most affected",
         href: "https://technext24.com/2026/07/03/cbn-h1-2026-nigerian-banks-fintechs/",
       },
     ],
@@ -195,7 +195,7 @@ export const posts: Post[] = [
     slug: "stablecoins-stopped-being-a-crypto-story",
     title: "Stablecoins stopped being a crypto story",
     standfirst:
-      "With the GENIUS Act and MiCA in force, the interesting question moved from issuance to interoperability — and from price to settlement speed.",
+      "With the GENIUS Act and MiCA in force, the interesting question moved from issuance to interoperability, and from price to settlement speed.",
     date: "2026-08-10",
     readingMinutes: 6,
     topic: "Fintech",
@@ -209,7 +209,7 @@ export const posts: Post[] = [
       { t: "h", text: "Two regimes, both live" },
       {
         t: "p",
-        text: "The GENIUS Act, enacted July 2025, is the first comprehensive US framework for payment stablecoins — federal or state supervision, 100% reserve backing, redemption rules and AML obligations. In the EU, MiCA has settled into something less like a licensing gate and more like an ongoing compliance regime, with the 2026 attention on governance, reserve management, disclosure and conduct rather than initial authorisation. A UK framework is expected to follow.",
+        text: "The GENIUS Act, enacted July 2025, is the first comprehensive US framework for payment stablecoins: federal or state supervision, 100% reserve backing, redemption rules and AML obligations. In the EU, MiCA has settled into something less like a licensing gate and more like an ongoing compliance regime, with the 2026 attention on governance, reserve management, disclosure and conduct rather than initial authorisation. A UK framework is expected to follow.",
       },
       {
         t: "p",
@@ -218,7 +218,7 @@ export const posts: Post[] = [
       { t: "h", text: "Speed overtook cost" },
       {
         t: "p",
-        text: "The pitch used to be that cross-border transfers were expensive and stablecoins were cheap. In 2026 the reporting consistently says something different: institutional buyers care more about speed and reliability — 24/7 settlement, predictable finality — than about shaving basis points. B2B cross-border is where that is landing first.",
+        text: "The pitch used to be that cross-border transfers were expensive and stablecoins were cheap. In 2026 the reporting consistently says something different: institutional buyers care more about speed and reliability (24/7 settlement, predictable finality) than about shaving basis points. B2B cross-border is where that is landing first.",
       },
       {
         t: "p",
@@ -227,7 +227,7 @@ export const posts: Post[] = [
       { t: "h", text: "The next problem is interoperability" },
       {
         t: "p",
-        text: "The phase we are entering is less about launching new stablecoins and more about making the existing ones work together and connect to traditional rails. Multiple coins operating under different regulatory regimes need mechanisms to transact seamlessly — and that is a harder engineering and legal problem than issuance ever was.",
+        text: "The phase we are entering is less about launching new stablecoins and more about making the existing ones work together and connect to traditional rails. Multiple coins operating under different regulatory regimes need mechanisms to transact seamlessly, and that is a harder engineering and legal problem than issuance ever was.",
       },
       {
         t: "note",
@@ -239,7 +239,7 @@ export const posts: Post[] = [
         items: [
           "Reserve attestation becomes a thing your product can surface, not just something your treasury team files",
           "Choosing a stablecoin is now partly a jurisdictional choice, with different disclosure and redemption guarantees behind each",
-          "Nigeria's CBN sandbox now has an explicit VASP track covering stablecoins, custody and wallets — a supervised path where there previously was not one",
+          "Nigeria's CBN sandbox now has an explicit VASP track covering stablecoins, custody and wallets: a supervised path where there previously was not one",
           "If your value proposition was 'cheaper', re-test it; if it was 'settles now, at 2am, on a Sunday', it just got stronger",
         ],
       },
@@ -250,19 +250,19 @@ export const posts: Post[] = [
     ],
     sources: [
       {
-        label: "Forbes — Stablecoin cross-border payments in 2026: from theory to practice",
+        label: "Forbes: Stablecoin cross-border payments in 2026: from theory to practice",
         href: "https://www.forbes.com/sites/danielwebber/2026/03/30/stablecoin-cross-border-payments-in-2026-from-theory-to-practice/",
       },
       {
-        label: "The Payments Association — How stablecoin regulation is reshaping payments in 2026",
+        label: "The Payments Association: How stablecoin regulation is reshaping payments in 2026",
         href: "https://thepaymentsassociation.org/article/how-stablecoin-regulation-is-reshaping-payments-in-2026/",
       },
       {
-        label: "PYMNTS — This week in stablecoins: fintech, big tech and regulation",
+        label: "PYMNTS: This week in stablecoins: fintech, big tech and regulation",
         href: "https://www.pymnts.com/cryptocurrency/2026/this-week-in-stablecoins-fintech-big-tech-and-regulation",
       },
       {
-        label: "FinTech Weekly — 2026 stablecoin predictions: from crypto plumbing to payments infrastructure",
+        label: "FinTech Weekly: 2026 stablecoin predictions: from crypto plumbing to payments infrastructure",
         href: "https://www.fintechweekly.com/news/stablecoin-predictions-2026-payments-infrastructure-regulation",
       },
     ],
@@ -291,7 +291,7 @@ export const posts: Post[] = [
       { t: "h", text: "The system got the hard things right" },
       {
         t: "p",
-        text: "Credit where it is due, because it matters for the argument. Payment amounts were computed server-side in every wired flow — no client could tamper with what it owed. The payment webhook preserved the raw body so the HMAC actually verified. Ownership checks on listings, bookings and chats were mostly present. There was no mass assignment on create or update.",
+        text: "Credit where it is due, because it matters for the argument. Payment amounts were computed server-side in every wired flow, so no client could tamper with what it owed. The payment webhook preserved the raw body so the HMAC actually verified. Ownership checks on listings, bookings and chats were mostly present. There was no mass assignment on create or update.",
       },
       {
         t: "p",
@@ -305,7 +305,7 @@ export const posts: Post[] = [
       {
         t: "list",
         items: [
-          "The auth middleware rejected admin-typed tokens but nothing else — so a 30-day refresh token worked as a bearer on every non-role-gated endpoint, quietly defeating logout and rotation",
+          "The auth middleware rejected admin-typed tokens but nothing else, so a 30-day refresh token worked as a bearer on every non-role-gated endpoint, quietly defeating logout and rotation",
           "Identity verification succeeded, but the result was not bound to the caller who requested it",
           "The admin console's gate was a client-side boolean; the server did not re-ask",
           "Private chat threads rode along inside public listing responses, because the listing serializer was written before chats existed",
@@ -328,19 +328,19 @@ export const posts: Post[] = [
       { t: "h", text: "What actually helps" },
       {
         t: "p",
-        text: "Not more code review — review is where this class of bug hides best, because each diff looks reasonable on its own. What helps is making the rule impossible to forget rather than easy to remember.",
+        text: "Not more code review. Review is where this class of bug hides best, because each diff looks reasonable on its own. What helps is making the rule impossible to forget rather than easy to remember.",
       },
       {
         t: "code",
         lang: "ts",
-        text: `// Not this — the check is a thing you must remember to write
+        text: `// Not this: the check is a thing you must remember to write
 router.post("/bookings/:id/pay", auth, async (req, res) => {
   const booking = await Booking.findById(req.params.id);
   if (booking.userId !== req.user.id) return res.sendStatus(403);
   // …
 });
 
-// This — the check is a thing you must deliberately opt out of
+// This: the check is a thing you must deliberately opt out of
 router.post(
   "/bookings/:id/pay",
   auth({ tokenType: "access" }),        // refresh tokens cannot reach here
@@ -355,7 +355,7 @@ router.post(
       { t: "h", text: "The part I would tell a younger version of myself" },
       {
         t: "p",
-        text: "Auditing your own system is uncomfortable and it is the fastest learning I have done. Reading six repositories with no intention of fixing anything — just recording, with file and line, what is actually true — surfaces things that months of feature work never will. The report was more valuable than any single fix in it.",
+        text: "Auditing your own system is uncomfortable and it is the fastest learning I have done. Reading six repositories with no intention of fixing anything, just recording with file and line what is actually true, surfaces things that months of feature work never will. The report was more valuable than any single fix in it.",
       },
       {
         t: "note",

@@ -22,7 +22,7 @@ export const techNodes: TechNode[] = [
   { name: "Next.js", cluster: "frontend", detail: "App Router across 9 projects", x: 0.27, y: 0.10 },
   { name: "TypeScript", cluster: "frontend", detail: "Default on anything with more than one contributor", x: 0.22, y: 0.29 },
   { name: "Tailwind CSS", cluster: "frontend", detail: "Design tokens over utility soup", x: 0.08, y: 0.34 },
-  { name: "GSAP", cluster: "frontend", detail: "ScrollTrigger choreography — including this page", x: 0.35, y: 0.23 },
+  { name: "GSAP", cluster: "frontend", detail: "ScrollTrigger choreography, including this page", x: 0.35, y: 0.23 },
   { name: "Three.js", cluster: "frontend", detail: "R3F scenes where 3D earns its cost", x: 0.33, y: 0.37 },
 
   /* Mobile — upper right */
