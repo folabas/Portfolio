@@ -5,7 +5,7 @@ import { FooterCTA } from "@/components/layout/FooterCTA";
 export const metadata: Metadata = {
   title: "Journal",
   description:
-    "Notes on fintech regulation, payment infrastructure and the engineering underneath — written from the position of someone shipping into it.",
+    "Notes on fintech regulation, payment infrastructure and the engineering underneath, written from the position of someone shipping into it.",
 };
 
 export default function JournalPage() {
