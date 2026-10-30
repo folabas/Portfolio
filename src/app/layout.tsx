@@ -4,7 +4,6 @@ import "./globals.css";
 
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { CustomCursor } from "@/components/motion/CustomCursor";
-import { AnimatedBackground } from "@/components/bg/AnimatedBackground";
 import { Navbar } from "@/components/layout/Navbar";
 import { Loader } from "@/components/layout/Loader";
 import { CommandPalette } from "@/components/layout/CommandPalette";
@@ -28,13 +27,13 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://basitolajide.dev"),
   title: {
-    default: `${site.name} — Software Engineer`,
-    template: `%s — ${site.name}`,
+    default: `${site.name} · Software Engineer`,
+    template: `%s · ${site.name}`,
   },
   description:
     "Software engineer building across fintech, marketplaces, mobile and machine learning. Selected work, case studies and contact.",
   openGraph: {
-    title: `${site.name} — Software Engineer`,
+    title: `${site.name} · Software Engineer`,
     description:
       "Software engineer building across fintech, marketplaces, mobile and machine learning.",
     type: "website",
@@ -94,8 +93,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
 
+        {/*
+          There is no animated background component any more. It was four fixed
+          layers — a pointer-tracked radial light, a drifting grid, coordinate
+          marks and shifting grain — all running off a rAF loop behind the type.
+          It pulled the eye away from the one sentence the hero has to land.
+
+          What replaced it is a single static gradient and vignette painted by
+          `body::before` in globals.css: no JavaScript, no pointer tracking, no
+          frame loop, and nothing on the page that moves on its own.
+        */}
         <Loader />
-        <AnimatedBackground />
         <CustomCursor />
         <CommandPalette />
 

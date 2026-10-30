@@ -11,8 +11,14 @@ export type Group =
 export interface ProjectLink {
   label: string;
   href: string;
-  /** "live" renders a URL preview card; "repo" renders a compact source link. */
-  kind?: "live" | "repo";
+  /**
+   * "live"  renders a URL preview card
+   * "repo"  renders a compact source link
+   * "store" renders a store badge with the platform's mark — set `store` too.
+   */
+  kind?: "live" | "repo" | "store";
+  /** Which store the badge draws. Only read when `kind` is "store". */
+  store?: "appstore" | "play";
 }
 
 /** Set when a project was built for a competition rather than as product work. */

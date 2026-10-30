@@ -38,7 +38,7 @@ export const hero = {
   /** The word that takes the accent. Index into `lines`. */
   accentLine: 2,
   standfirst:
-    "Software engineer working across fintech, marketplaces, mobile and machine learning — from the payment rail to the pixel.",
+    "Software engineer working across fintech, marketplaces, mobile and machine learning, from the payment rail to the pixel.",
 } as const;
 
 export const statement = {
@@ -53,25 +53,32 @@ export const statement = {
   accentLines: [3, 5],
 } as const;
 
+/**
+ * HOME-PAGE CHAPTERS
+ * Drives the left-margin progress rail. Ids must match the section elements on
+ * the home page — sections that moved to their own route are not chapters.
+ */
 export const chapters = [
   { id: "intro", label: "INTRO" },
-  { id: "work", label: "SELECTED WORK" },
-  { id: "archive", label: "ARCHIVE" },
-  { id: "systems", label: "SYSTEMS" },
-  { id: "experience", label: "EXPERIENCE" },
-  { id: "credentials", label: "CREDENTIALS" },
-  { id: "about", label: "ABOUT" },
+  { id: "projects", label: "PROJECTS" },
+  { id: "statement", label: "IDENTITY" },
+  { id: "stack", label: "STACK" },
   { id: "contact", label: "CONTACT" },
 ] as const;
 
+/**
+ * NAVIGATION
+ * `primary` links sit in the top bar on desktop. Everything appears in the
+ * fullscreen menu — the bar stays short so it never competes with the type.
+ */
 export const nav = [
-  { label: "Work", href: "/#work" },
-  { label: "Journal", href: "/journal" },
-  { label: "Systems", href: "/#systems" },
-  { label: "Experience", href: "/#experience" },
-  { label: "Credentials", href: "/#credentials" },
-  { label: "About", href: "/#about" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Projects", href: "/#projects", primary: true },
+  { label: "Side projects", href: "/side-projects", primary: false },
+  { label: "Personal projects", href: "/personal-projects", primary: false },
+  { label: "Stack", href: "/#stack", primary: false },
+  { label: "About", href: "/about", primary: true },
+  { label: "Journal", href: "/journal", primary: false },
+  { label: "Contact", href: "/#contact", primary: true },
 ] as const;
 
 export const about = {
@@ -79,15 +86,15 @@ export const about = {
   accentLines: [2],
   bio: [
     "I'm a computer science student at Lead City University in Ibadan, and I spend most of my time building things that go into production.",
-    "The work runs across three lanes that keep feeding each other: consumer fintech — wallets, gift card exchange, savings, payment rails; marketplaces with real verification and money in them; and machine learning, where I care most about the unglamorous part upstream of the model.",
-    "I also run security and correctness audits on my own systems. On iléSure that meant reading all six repositories end to end and writing up every finding against a file and line reference — the fastest way I know to learn where a system actually breaks.",
+    "The work runs across three lanes that keep feeding each other: consumer fintech (wallets, gift card exchange, savings, payment rails); marketplaces with real verification and money in them; and machine learning, where I care most about the unglamorous part upstream of the model.",
+    "I also run security and correctness audits on my own systems. On iléSure that meant reading all six repositories end to end and writing up every finding against a file and line reference, the fastest way I know to learn where a system actually breaks.",
   ],
   facts: [
     { k: "Based in", v: "Ibadan, Nigeria" },
     { k: "Studying", v: "BSc Computer Science, Lead City University" },
     { k: "Focus", v: "Fintech · Marketplaces · Applied ML" },
     { k: "Currently", v: "Full-Stack Developer at Gratebridge" },
-    { k: "Also", v: "Google Developer Student Club — workshops on Python & data structures" },
+    { k: "Also", v: "Google Developer Student Club: workshops on Python & data structures" },
   ],
   interests: ["Technology", "Fashion", "Music", "Gaming"],
 } as const;
@@ -110,7 +117,11 @@ export const metrics = [
     suffix: "",
     computed: true,
   },
-  { value: 10, label: "Products shipped", suffix: "+" },
+  { value: projects.filter((p) => p.links?.some((l) => l.kind === "live" || l.kind === "store")).length,
+    label: "Shipped and publicly live",
+    suffix: "",
+    computed: true,
+  },
   { value: 4, label: "Years building", suffix: "+" },
 ] as const;
 

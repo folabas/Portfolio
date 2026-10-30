@@ -25,11 +25,11 @@ export const projects: Project[] = [
     group: "FINTECH / FINANCIAL SYSTEMS",
     disciplines: ["PRODUCT", "FINTECH", "WEB", "MOBILE"],
     typeLine: "FINTECH / WEB / MOBILE",
-    year: "2025 — 2026",
+    year: "2025–2026",
     role: "Frontend & product engineering",
     platform: "Web · iOS · Android",
     description:
-      "Majorlink is a Nigerian money app for trading gift cards, converting crypto to Naira and paying bills from one balance. I built the public web platform that fronts the product — marketing, onboarding, compliance pages and the authenticated checkout flow.",
+      "Majorlink is a Nigerian money app for trading gift cards, converting crypto to Naira and paying bills from one balance. I built the public web platform that fronts the product: marketing, onboarding, compliance pages and the authenticated checkout flow.",
     problem:
       "Gift card and crypto liquidity in Nigeria is fragmented across informal desks and single-purpose apps, so users juggle several channels and have no consistent view of rates or settlement.",
     solution:
@@ -49,8 +49,11 @@ export const projects: Project[] = [
       {
         label: "Google Play",
         href: "https://play.google.com/store/apps/details?id=com.olamide81.MajorlinkApp",
-        kind: "repo",
+        kind: "store",
+        store: "play",
       },
+      // TODO — the App Store listing is referenced in the outcome copy but no
+      // public URL was supplied. Add it here and the badge appears.
     ],
     hero: {
       src: img("majorlink", "hero"),
@@ -83,7 +86,7 @@ export const projects: Project[] = [
     problem:
       "A broken streetlight or a collapsed drain gets reported into a group chat and disappears. There is no shared record, no status, and no way for a resident to know whether anything happened.",
     solution:
-      "One public record per report — photo, location, status — with a separate admin dashboard for the people triaging them, so a report has a visible lifecycle instead of an inbox.",
+      "One public record per report (photo, location, status), with a separate admin dashboard for the people triaging them, so a report has a visible lifecycle instead of an inbox.",
     features: [
       "Photo + geolocation capture at report time",
       "Public feed of reports, open to anyone",
@@ -173,7 +176,7 @@ export const projects: Project[] = [
     problem:
       "Watching something with someone remotely means counting down over a call and drifting out of sync within minutes. Playback state has to be authoritative somewhere.",
     solution:
-      "The host owns playback. Play, pause and seek propagate over Socket.io to every participant, while WebRTC carries the faces and Mux carries the stream — so the heavy video path never runs through the sync channel.",
+      "The host owns playback. Play, pause and seek propagate over Socket.io to every participant, while WebRTC carries the faces and Mux carries the stream, so the heavy video path never runs through the sync channel.",
     features: [
       "Rooms with unique codes, privacy settings and participant caps",
       "Host-authoritative synchronised playback across all participants",
@@ -219,11 +222,11 @@ export const projects: Project[] = [
     role: "Product architecture & full-stack engineering",
     platform: "Web · Brand, Creator and Admin platforms",
     description:
-      "A marketplace where brands run campaigns with creators and pay against delivered reach rather than promises. Three separate products — Brand, Creator and Admin — sit on one shared marketplace core so campaign, slot and wallet logic exists in exactly one place.",
+      "A marketplace where brands run campaigns with creators and pay against delivered reach rather than promises. Three separate products (Brand, Creator and Admin) sit on one shared marketplace core so campaign, slot and wallet logic exists in exactly one place.",
     problem:
       "Creator marketing runs on trust and screenshots. Brands cannot verify what they paid for, creators chase payment after delivery, and every platform that tries to fix this ends up with three apps each holding their own copy of the campaign rules.",
     solution:
-      "One shared services layer — campaign, slot, rank, verification, escrow, wallet, analytics, fraud, notification, media, search, audit — with the three front-ends reduced to presentation. Nothing consequential is duplicated, so the apps stay consistent by construction rather than by discipline.",
+      "One shared services layer covering campaign, slot, rank, verification, escrow, wallet, analytics, fraud, notification, media, search and audit, with the three front-ends reduced to presentation. Nothing consequential is duplicated, so the apps stay consistent by construction rather than by discipline.",
     features: [
       "Brand platform: campaign creation, slot allocation, budget and performance",
       "Creator platform: discovery, applications, delivery and payouts",
@@ -234,7 +237,7 @@ export const projects: Project[] = [
     ],
     stack: ["React", "TypeScript", "Vite", "Node.js", "Express", "MongoDB", "Queue workers", "Object storage"],
     challenges:
-      "Designing the state machines — campaign, slot, escrow — so three products could act on the same entity without racing each other.",
+      "Designing the state machines for campaign, slot and escrow so three products could act on the same entity without racing each other.",
     outcome:
       "Product architecture specification written alongside the build; the marketing site is live on a waitlist.",
     links: [{ label: "easilypromote.com", href: "https://easilypromote.com", kind: "live" }],
@@ -265,13 +268,13 @@ export const projects: Project[] = [
     role: "Full-stack engineering & security audit",
     platform: "iOS · Android · four web apps · API",
     description:
-      "A Nigerian student-housing marketplace — “Your Sure Home Anywhere”. Agents, landlords and companies list properties; students pick their campus corridor, book, pay in Naira, verify identity, sign a tenancy agreement and match with roommates. The name is Yoruba for “safe home”, which is also the product requirement.",
+      "A Nigerian student-housing marketplace: “Your Sure Home Anywhere”. Agents, landlords and companies list properties; students pick their campus corridor, book, pay in Naira, verify identity, sign a tenancy agreement and match with roommates. The name is Yoruba for “safe home”, which is also the product requirement.",
     problem:
       "Off-campus housing around Nigerian universities runs on word of mouth and forwarded messages. Students cannot tell a real listing from a fake one, roommate arrangements are made blind, and landlords have no signal of actual demand.",
     solution:
       "Verification as the spine of the product: agents clear NIN, BVN, proof of ownership and a live selfie before a listing goes live; companies additionally clear CAC and TIN. Payment amounts are computed server-side in every flow, and tenancy agreements are signed and issued as PDFs.",
     features: [
-      "Campus-first onboarding — pick your school and see only that corridor: Lead City, University of Ibadan, LAUTECH, Polytechnic Ibadan",
+      "Campus-first onboarding that shows only your school’s corridor: Lead City, University of Ibadan, LAUTECH, Polytechnic Ibadan",
       "Tiered verification for agents, landlords and registered companies",
       "Listings, applications, waitlists and bookings across Toll Gate, Bodija, Soka, New Garage and Akala-Express",
       "Paystack payments in NGN with server-computed amounts",
@@ -295,7 +298,7 @@ export const projects: Project[] = [
     ],
     links: [{ label: "ilesure.com", href: "https://ilesure.com", kind: "live" }],
     challenges:
-      "I ran a full read-only security and correctness audit across all six repositories — backend, mobile and four web front-ends — writing up every finding against a file and line reference. The recurring pattern was trust boundaries enforced in one place instead of every place: refresh tokens honoured as access tokens, an admin gate that was a client-side boolean, and two shared-booking flows whose split paid the landlord twice. The audit is the deliverable I am proudest of here.",
+      "I ran a full read-only security and correctness audit across all six repositories (backend, mobile and four web front-ends), writing up every finding against a file and line reference. The recurring pattern was trust boundaries enforced in one place instead of every place: refresh tokens honoured as access tokens, an admin gate that was a client-side boolean, and two shared-booking flows whose split paid the landlord twice. The audit is the deliverable I am proudest of here.",
     /**
      * Real supplied mockup — a transparent PNG that already renders its own
      * devices, so it takes `bare` (no second frame) and its own dimensions.
@@ -336,7 +339,7 @@ export const projects: Project[] = [
     role: "Full-stack engineering",
     platform: "Web",
     description:
-      "A stock research platform for companies listed on the Nigerian Exchange. Company profiles, prices, financial trends and educational content that explains each financial term in plain language with a worked example — aimed at first-time investors as much as active traders.",
+      "A stock research platform for companies listed on the Nigerian Exchange. Company profiles, prices, financial trends and educational content that explains each financial term in plain language with a worked example, aimed at first-time investors as much as active traders.",
     problem:
       "Nigerian retail investors research across the NGX site, broker platforms and news sites, in language written for professionals. Most tools prioritise US and EU markets, and metrics are shown with no indication of what good or bad looks like.",
     solution:
@@ -397,7 +400,7 @@ export const projects: Project[] = [
     group: "FINTECH / FINANCIAL SYSTEMS",
     disciplines: ["WEB", "FINTECH"],
     typeLine: "FINTECH / WEB / CONTENT",
-    year: "2025 — 2026",
+    year: "2025–2026",
     role: "Frontend engineering",
     platform: "Web",
     description:
@@ -434,7 +437,7 @@ export const projects: Project[] = [
     role: "Frontend engineering",
     platform: "Web",
     description:
-      "A compliance platform for companies expanding across jurisdictions — incorporation, licensing and market entry presented as a tracked process rather than a services brochure.",
+      "A compliance platform for companies expanding across jurisdictions: incorporation, licensing and market entry presented as a tracked process rather than a services brochure.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS"],
     note: "Structure is built and wired to the data model. Feature detail and copy stay thin until the product material and screenshots are supplied.",
     hero: { src: img("gratebridge", "hero"), alt: "Gratebridge jurisdiction and licensing overview", device: "browser" },
@@ -455,11 +458,11 @@ export const projects: Project[] = [
     group: "BUSINESS / ENTERPRISE",
     disciplines: ["PRODUCT", "MOBILE"],
     typeLine: "MARKETPLACE / MOBILE / CROSS-PLATFORM",
-    year: "2025 — 2026",
+    year: "2025–2026",
     role: "Mobile engineering",
     platform: "iOS · Android",
     description:
-      "A cross-platform mobile marketplace connecting artisans with clients. Clients post work, artisans submit proposals, and both sides carry a rating history — with real-time chat holding the negotiation in one place.",
+      "A cross-platform mobile marketplace connecting artisans with clients. Clients post work, artisans submit proposals, and both sides carry a rating history, with real-time chat holding the negotiation in one place.",
     features: [
       "Task posting by clients and service offering by vendors",
       "Bidding system with vendor proposals",
@@ -490,7 +493,7 @@ export const projects: Project[] = [
     role: "Full-stack engineering",
     platform: "Web",
     description:
-      "A booking platform for a beauty studio — services with size and duration variants, a gallery, and calendar-backed appointments. Built on Postgres through Prisma, with the visual layer given more expression than the technical projects in this portfolio.",
+      "A booking platform for a beauty studio: services with size and duration variants, a gallery, and calendar-backed appointments. Built on Postgres through Prisma, with the visual layer given more expression than the technical projects in this portfolio.",
     features: [
       "Service catalogue with size variants and per-service galleries",
       "Appointment booking backed by a relational schema",
@@ -526,13 +529,13 @@ export const projects: Project[] = [
     group: "AI / MACHINE LEARNING",
     disciplines: ["AI / ML", "BACKEND"],
     typeLine: "MACHINE LEARNING / RESEARCH / API",
-    year: "2025 — 2026",
+    year: "2025–2026",
     role: "ML engineering & research",
     platform: "Python pipeline · FastAPI service",
     description:
       "A machine-learning pipeline over Nigerian disease-surveillance data. NCDC outbreak records are cleaned and merged across inconsistent schemas, joined against climate, population and hospital features, and used to train both regression and deep sequence models, served through a FastAPI backend.",
     problem:
-      "Surveillance data arrives in different schemas from year to year, with inconsistent naming against WHO references — most of the work is upstream of the model.",
+      "Surveillance data arrives in different schemas from year to year, with inconsistent naming against WHO references, so most of the work is upstream of the model.",
     solution:
       "A reproducible pipeline: schema merge, WHO mapping audit and fill, feature build, versioned datasets, then training and evaluation as separate stages so a model can be rebuilt from raw sources.",
     features: [
@@ -552,11 +555,11 @@ export const projects: Project[] = [
         kind: "repo",
       },
     ],
-    hackathon: { name: "Devpost Hackathon", year: "2025 — 2026" },
+    hackathon: { name: "Devpost Hackathon", year: "2025–2026" },
     challenges:
       "Reconciling NCDC schemas that change between reporting years, and auditing the WHO name mapping rather than trusting a fuzzy join.",
     outcome:
-      "A research pipeline and API. This is a modelling project — it is not a clinically validated or deployed public-health system, and its outputs are not medical guidance.",
+      "A research pipeline and API. This is a modelling project, not a clinically validated or deployed public-health system, and its outputs are not medical guidance.",
     hero: {
       src: img("disease-outbreak-prediction", "hero"),
       alt: "Outbreak prediction map and time series",
@@ -621,11 +624,11 @@ export const projects: Project[] = [
     role: "Full-stack engineering",
     platform: "Web",
     description:
-      "A companion app for students on SIWES — the Students Industrial Work Experience Scheme, Nigeria's mandatory industrial attachment. Students sign in with their Lead City matric number and keep the whole placement in one place: timetable, daily notes, tasks and a running streak.",
+      "A companion app for students on SIWES, the Students Industrial Work Experience Scheme, Nigeria's mandatory industrial attachment. Students sign in with their Lead City matric number and keep the whole placement in one place: timetable, daily notes, tasks and a running streak.",
     problem:
       "SIWES runs on a paper logbook that gets filled in from memory the week before it is due, which is exactly when the detail worth recording has already been forgotten.",
     solution:
-      "Move the record to something a student already checks daily — with streaks for consistency, notes tied to the day, and a timetable that makes the placement legible while it is happening rather than afterwards.",
+      "Move the record to something a student already checks daily, with streaks for consistency, notes tied to the day, and a timetable that makes the placement legible while it is happening rather than afterwards.",
     features: [
       "Matric-number sign-in scoped to Lead City University (LCU/UG/…)",
       "Daily notes and a review of previous entries",
@@ -658,16 +661,16 @@ export const projects: Project[] = [
     group: "AI / MACHINE LEARNING",
     disciplines: ["AI / ML"],
     typeLine: "MACHINE LEARNING / ARCHIVE",
-    year: "2024 — 2026",
+    year: "2024–2026",
     role: "ML engineering",
     platform: "Python · notebooks · services",
     description:
       "A working archive rather than a single product: four applied machine-learning builds kept together because each one exists to learn a technique end to end.",
     features: [
-      "Crypto Price Prediction — forecasting service with its own backend, frontend, Docker compose setup and feature-importance analysis",
-      "Image Classification with Neural Networks — CNN built with TensorFlow and Keras, with OpenCV preprocessing and augmentation",
-      "Cats & Dogs Classification — 64×3 convolutional architecture trained from pickled feature tensors, instrumented with TensorBoard",
-      "Real-Time Face Recognition — live recognition against a Firebase-backed database with a pre-computed encoding file",
+      "Crypto Price Prediction: forecasting service with its own backend, frontend, Docker compose setup and feature-importance analysis",
+      "Image Classification with Neural Networks: CNN built with TensorFlow and Keras, with OpenCV preprocessing and augmentation",
+      "Cats & Dogs Classification: 64×3 convolutional architecture trained from pickled feature tensors, instrumented with TensorBoard",
+      "Real-Time Face Recognition: live recognition against a Firebase-backed database with a pre-computed encoding file",
     ],
     stack: ["Python", "TensorFlow", "Keras", "OpenCV", "scikit-learn", "FastAPI", "Docker", "Firebase"],
     hero: { src: img("machine-learning", "hero"), alt: "Machine learning experiment archive", device: "browser" },
@@ -691,7 +694,7 @@ export const projects: Project[] = [
     description:
       "A developer-tooling agent for the GitLab Duo Agent Platform. It scores a .gitlab-ci.yml for risk before it merges, and when a pipeline does fail it reads the job logs and reports a root cause with a copy-pasteable fix. Built for the GitLab AI Hackathon.",
     problem:
-      "A failed pipeline tells you it is broken, not why. CI configuration problems — undefined stages, missing caches, over-permissive jobs — are usually visible before the merge, and nobody looks.",
+      "A failed pipeline tells you it is broken, not why. CI configuration problems (undefined stages, missing caches, over-permissive jobs) are usually visible before the merge, and nobody looks.",
     solution:
       "Expose the analysis as Model Context Protocol tools so the Duo engine calls them natively rather than through a chatbot wrapper, and keep a history of analyses so pipeline health is trackable over time.",
     features: [
@@ -699,7 +702,7 @@ export const projects: Project[] = [
       "Structural validation: syntax errors, undefined stages, conflicting logic",
       "Performance checks: missing caches, redundant steps, inefficient job ordering",
       "Failure diagnosis from job logs with an identified root cause",
-      "MCP tools — analyze_ci_yaml, get_structural_rules — exposed natively to Duo",
+      "MCP tools (analyze_ci_yaml, get_structural_rules) exposed natively to Duo",
       "Analysis history tracking pipeline health over time",
     ],
     stack: ["Python", "FastAPI", "Model Context Protocol", "SQLAlchemy", "SQLite", "Docker", "GitLab Duo"],
@@ -710,7 +713,7 @@ export const projects: Project[] = [
         kind: "repo",
       },
     ],
-    hackathon: { name: "GitLab AI Hackathon", year: "2025 — 2026" },
+    hackathon: { name: "GitLab AI Hackathon", year: "2025–2026" },
     hero: { src: img("ci-guardian", "hero"), alt: "CI Guardian risk score and pipeline analysis", device: "browser" },
     gallery: [
       { src: img("ci-guardian", "shot-1"), alt: "Terminal output of a pipeline risk analysis", device: "flat" },
@@ -766,8 +769,8 @@ export const projects: Project[] = [
     description:
       "Two deep convolutional classifiers for skin analysis: a four-class skin-tone model on ResNet50, and a six-class undertone model on EfficientNet-B3, trained on separate datasets with a shared training and evaluation harness.",
     features: [
-      "Skin tone classifier — ResNet50, four classes, 36,417 images",
-      "Undertone classifier — EfficientNet-B3, six classes, 4,808 images",
+      "Skin tone classifier: ResNet50, four classes, 36,417 images",
+      "Undertone classifier: EfficientNet-B3, six classes, 4,808 images",
       "Shared data loader, trainer and inference modules across both models",
       "Evaluation on accuracy, F1, precision, recall and confusion matrix",
     ],
@@ -778,7 +781,7 @@ export const projects: Project[] = [
     outcome:
       "Target set at ≥85% test accuracy. Trained weights for both models are checked into the project; measured results are pending write-up.",
     challenges:
-      "The two datasets are very different sizes — 36k images against 4.8k — so the undertone model needed a different regularisation posture than the tone model.",
+      "The two datasets are very different sizes (36k images against 4.8k), so the undertone model needed a different regularisation posture than the tone model.",
     hero: { src: img("tona-app-model", "hero"), alt: "Skin tone and undertone classification output", device: "browser" },
     gallery: [{ src: img("tona-app-model", "shot-1"), alt: "Confusion matrix and training curves", device: "flat" }],
     featured: false,
@@ -795,6 +798,21 @@ export const getNextProject = (slug: string) => {
   const i = projects.findIndex((p) => p.slug === slug);
   return projects[(i + 1) % projects.length];
 };
+
+/**
+ * HOW A PROJECT IS FILED
+ * ──────────────────────
+ * Three audiences, derived from the data rather than hand-maintained lists:
+ *
+ *   main     — `featured`: client and company work, the home page
+ *   personal — anything with a `hackathon`: built solo, against a clock
+ *   side     — everything else: smaller builds, experiments, internal tools
+ *
+ * A project is in exactly one of these, so nothing is listed twice.
+ */
+export const mainProjects = projects.filter((p) => p.featured && !p.hackathon);
+export const personalProjects = projects.filter((p) => p.hackathon);
+export const sideProjects = projects.filter((p) => !p.featured && !p.hackathon);
 
 export const FILTERS = ["ALL", "PRODUCT", "MOBILE", "WEB", "FINTECH", "AI / ML", "BACKEND", "TOOLS"] as const;
 

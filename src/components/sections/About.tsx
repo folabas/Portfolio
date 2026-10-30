@@ -2,8 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
-import { ChapterLabel } from "@/components/layout/ScrollProgress";
-import { TextReveal, Reveal } from "@/components/motion/TextReveal";
+import { Reveal } from "@/components/motion/TextReveal";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useDeviceTier } from "@/hooks/useDeviceTier";
@@ -47,20 +46,14 @@ export function About() {
   }, [reduced, touch]);
 
   return (
-    <section id="about" className="relative px-5 py-[12vh] md:px-10" aria-label="About">
+    <section id="about" className="relative px-5 pb-[12vh] md:px-10" aria-label="About">
       <div className="mx-auto max-w-[1600px]">
-        <ChapterLabel index={7} label="About" id="about" />
-
-        <div className="mt-10 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
+        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
           {/* left — statement */}
           <div>
-            <TextReveal
-              lines={about.headline}
-              accentLines={about.accentLines as readonly number[]}
-              className="display text-[clamp(1.9rem,5.2vw,4.4rem)] leading-[0.92] text-paper"
-            />
-
-            <Reveal className="mt-10 max-w-[54ch] space-y-5" delay={0.1}>
+            {/* The headline lives in the page masthead — see
+                /about/page.tsx. Repeating it here said the same thing twice. */}
+            <Reveal className="max-w-[54ch] space-y-5">
               {about.bio.map((p, i) => (
                 <p key={i} className="body-lg">
                   {p}
@@ -77,7 +70,7 @@ export function About() {
               </MagneticButton>
             </Reveal>
             {site.resume.placeholder && (
-              <p className="label mt-3">Résumé link is a placeholder — add public{site.resume.href}</p>
+              <p className="label mt-3">Résumé link is a placeholder. Add public{site.resume.href}</p>
             )}
           </div>
 
@@ -116,7 +109,7 @@ export function About() {
               />
               <figcaption className="absolute inset-x-0 bottom-0 flex items-center justify-between p-4">
                 <span className="label">{site.name}</span>
-                <span className="label">Portrait — placeholder</span>
+                <span className="label">Portrait placeholder</span>
               </figcaption>
             </figure>
 

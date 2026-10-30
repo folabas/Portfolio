@@ -11,15 +11,15 @@ import type { ExperienceEntry } from "./types";
 
 export const experience: ExperienceEntry[] = [
   {
-    year: "2022 — 2023",
+    year: "2022–2023",
     role: "Frontend Developer",
     company: "Cactus AI",
     description:
-      "Built the frontend for a healthcare service-provider platform — multi-step provider onboarding with validation and persistence, on a typed Next.js codebase.",
+      "Built the frontend for a healthcare service-provider platform: multi-step provider onboarding with validation and persistence, on a typed Next.js codebase.",
     technologies: ["Next.js", "React", "TypeScript", "MongoDB", "Tailwind CSS"],
   },
   {
-    year: "Dec 2024 — Aug 2025",
+    year: "Dec 2024–Aug 2025",
     role: "Mobile Developer (contract)",
     company: "Olyves Technologies Ltd",
     // CV lists this as "Dec 2024 – Present"; the brief says the contract ended
@@ -29,20 +29,20 @@ export const experience: ExperienceEntry[] = [
     technologies: ["React Native", "Expo Router", "React Query", "TypeScript", "Firebase"],
   },
   {
-    year: "Sept 2025 — Present",
-    role: "Full-Stack Developer",
+    year: "Sept 2025–Present",
+    role: "Co-founder",
     company: "iléSure",
     description:
       "Student housing and roommate matching for Nigerian universities. Property listings, real-time chat over Socket.io, contract e-signing with pdf-lib, Cloudinary document storage, and a tiered subscription for agents and companies.",
     technologies: ["React Native", "Expo", "TypeScript", "Node.js", "Express", "MongoDB", "Socket.io"],
   },
   {
-    year: "Oct 2025 — Present",
+    year: "Oct 2025–Present",
     role: "Full-Stack Developer",
     company: "Gratebridge",
     // CV says October 2025; the brief said September. Using the CV.
     description:
-      "Shipping across fintech products handling cross-border payments and multi-currency transactions for users in several African countries, including crypto deposits that convert straight into local currency. Built a self-service transaction reporting system that routes issues like undelivered payments to management for investigation and bank escalation — daily support tickets fell from 6–7 to 1–2.",
+      "Shipping across fintech products handling cross-border payments and multi-currency transactions for users in several African countries, including crypto deposits that convert straight into local currency. Built a self-service transaction reporting system that routes issues like undelivered payments to management for investigation and bank escalation. Daily support tickets fell from 6–7 to 1–2.",
     technologies: ["Next.js", "TypeScript", "Node.js", "React", "Tailwind CSS"],
   },
 ];

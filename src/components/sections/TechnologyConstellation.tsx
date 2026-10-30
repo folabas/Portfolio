@@ -34,15 +34,15 @@ export function TechnologyConstellation() {
   const clusterOf = (id: string) => clusters.find((c) => c.id === id);
 
   return (
-    <section id="systems" className="relative px-5 py-[12vh] md:px-10" aria-label="Technologies">
+    <section id="stack" className="relative px-5 py-[12vh] md:px-10" aria-label="Stack">
       <div className="mx-auto max-w-[1600px]">
-        <ChapterLabel index={4} label="Systems" id="systems" />
+        <ChapterLabel index={4} label="Stack" id="stack" />
 
         <div className="mt-8 flex flex-wrap items-end justify-between gap-8 border-b border-line pb-8">
           <h2 className="display max-w-[14ch] text-[clamp(1.9rem,5vw,4rem)] text-paper">
-            The tools,
+            My stack,
             <br />
-            <span className="text-accent">and how they connect.</span>
+            <span className="text-accent">and how it connects.</span>
           </h2>
           <p className="body-lg max-w-[40ch]">
             Every node here appears in the stack of at least one project on this site.
@@ -100,7 +100,7 @@ export function TechnologyConstellation() {
                   onMouseEnter={() => setActive(n.name)}
                   onFocus={() => setActive(n.name)}
                   onClick={() => setActive((v) => (v === n.name ? null : n.name))}
-                  aria-label={`${n.name} — ${n.detail}`}
+                  aria-label={`${n.name}: ${n.detail}`}
                   className="group absolute -translate-x-1/2 -translate-y-1/2 rounded-full outline-offset-4 transition-opacity duration-500"
                   style={{
                     left: `${n.x * 100}%`,
@@ -135,7 +135,7 @@ export function TechnologyConstellation() {
               <p className="max-w-[46ch] text-[12.5px] leading-relaxed text-muted transition-opacity duration-500">
                 {active ? (
                   <>
-                    <span className="text-paper">{active}</span> — {nodeOf(active)?.detail}
+                    <span className="text-paper">{active}</span>: {nodeOf(active)?.detail}
                   </>
                 ) : (
                   "Hover or tap a node."
