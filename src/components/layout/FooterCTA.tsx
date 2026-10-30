@@ -14,7 +14,7 @@ import { footerCta, site } from "@/data/site";
  * tracks the pointer across the section so the last thing on the page still
  * responds to you.
  */
-export function FooterCTA() {
+export function FooterCTA({ chapter = false }: { chapter?: boolean } = {}) {
   const section = useRef<HTMLElement>(null);
   const arrow = useRef<HTMLSpanElement>(null);
   const [copied, setCopied] = useState(false);
@@ -54,7 +54,15 @@ export function FooterCTA() {
       className="relative overflow-hidden border-t border-line px-5 pb-8 pt-[12vh] md:px-10"
     >
       <div className="mx-auto max-w-[1600px]">
-        <ChapterLabel index={8} label="Contact" id="contact" />
+        {/* Only the home page has chapters; a sub-page shows a plain rule. */}
+        {chapter ? (
+          <ChapterLabel index={5} label="Contact" id="contact" />
+        ) : (
+          <div className="flex items-center gap-4">
+            <span className="h-px w-10 bg-line" />
+            <span className="label">Contact</span>
+          </div>
+        )}
 
         <div className="relative mt-10">
           <TextReveal

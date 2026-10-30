@@ -6,6 +6,7 @@ import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { FILTERS, projects, type Filter } from "@/data/projects";
+import type { Project } from "@/data/types";
 
 /**
  * WORK ARCHIVE
@@ -16,15 +17,31 @@ import { FILTERS, projects, type Filter } from "@/data/projects";
  *
  * Motion handles this (not GSAP) because `layout` is exactly the problem it
  * solves and re-implementing FLIP by hand here would be worse.
+ *
+ * `items` is a parameter rather than always the whole catalogue, so the same
+ * table serves the side-projects index and any other filtered view. The filter
+ * buttons are derived from what is actually in `items` — offering a discipline
+ * that would always return an empty list is worse than not offering it.
  */
-export function ProjectArchive() {
+export function ProjectArchive({
+  items = projects,
+  title = "All work",
+}: {
+  items?: readonly Project[];
+  title?: string;
+} = {}) {
   const [filter, setFilter] = useState<Filter>("ALL");
   const [hovered, setHovered] = useState<string | null>(null);
   const reduced = useReducedMotion();
 
+  const filters = useMemo(
+    () => FILTERS.filter((f) => f === "ALL" || items.some((p) => p.disciplines.includes(f as never))),
+    [items]
+  );
+
   const list = useMemo(
-    () => (filter === "ALL" ? projects : projects.filter((p) => p.disciplines.includes(filter as never))),
-    [filter]
+    () => (filter === "ALL" ? items : items.filter((p) => p.disciplines.includes(filter as never))),
+    [filter, items]
   );
 
   return (
@@ -38,11 +55,11 @@ export function ProjectArchive() {
 
         <div className="flex flex-wrap items-end justify-between gap-8 border-b border-line pb-6">
           <h2 className="display text-[clamp(1.8rem,4.4vw,3.4rem)] text-paper">
-            All work — <span className="text-muted">{projects.length}</span>
+            {title} <span className="text-muted">{items.length}</span>
           </h2>
 
           <div role="group" aria-label="Filter work" className="flex flex-wrap gap-2">
-            {FILTERS.map((f) => {
+            {filters.map((f) => {
               const on = f === filter;
               return (
                 <button
@@ -149,7 +166,7 @@ export function ProjectArchive() {
                 className="w-[280px] overflow-hidden rounded-lg border border-line bg-ink-2"
               >
                 <Image
-                  src={projects.find((p) => p.slug === hovered)!.hero.src}
+                  src={items.find((p) => p.slug === hovered)!.hero.src}
                   alt=""
                   aria-hidden
                   width={560}

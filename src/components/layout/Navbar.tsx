@@ -14,9 +14,15 @@ import { Logo, Wordmark } from "@/components/brand/Logo";
 /**
  * NAVBAR + FULLSCREEN MENU
  * ────────────────────────
- * The bar hides on scroll-down and returns on scroll-up so it never competes
- * with a pinned section. The menu is a full-screen panel with staggered links
- * and a preview that changes on hover.
+ * The bar hides on scroll-down and returns on scroll-up. Only the links marked
+ * `primary` in src/data/site.ts appear inline — the bar carries three, not the
+ * whole site map, so it stays out of the way of the type. Everything is in the
+ * fullscreen menu, which has staggered links and a preview that changes on
+ * hover.
+ *
+ * The "available for work" status pill that used to sit next to the menu button
+ * is gone: a blinking dot in the top-right corner of every page is exactly the
+ * kind of thing that pulls attention off the work.
  */
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -110,14 +116,14 @@ export function Navbar() {
           href="/"
           className="group/logo flex items-center gap-2.5"
           data-cursor="HOME"
-          aria-label={`${site.name} — home`}
+          aria-label={`${site.name}, home`}
         >
           <Logo className="text-paper" />
           <Wordmark className="hidden sm:block" />
         </Link>
 
         <nav className="hidden items-center gap-9 md:flex" aria-label="Primary">
-          {nav.map((n) => (
+          {nav.filter((n) => n.primary).map((n) => (
             <Link
               key={n.href}
               href={n.href}
@@ -130,14 +136,6 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-5">
-          <span className="hidden items-center gap-2 font-mono text-[10.5px] uppercase tracking-[0.16em] text-paper/75 lg:flex">
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-70" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
-            </span>
-            {site.availability}
-          </span>
-
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}

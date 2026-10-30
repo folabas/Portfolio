@@ -2,9 +2,9 @@
 
 import { useEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
-import { ChapterLabel } from "@/components/layout/ScrollProgress";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { experience, hasRealExperience } from "@/data/experience";
+import { site } from "@/data/site";
 
 /**
  * EXPERIENCE TIMELINE
@@ -12,9 +12,9 @@ import { experience, hasRealExperience } from "@/data/experience";
  * The spine draws itself as the section scrolls (scaleY scrub), entries enter
  * from alternating sides, and each node pops when the line reaches it.
  *
- * Every row currently in the data is a placeholder and says so — see
- * src/data/experience.ts. The disclaimer and the badges disappear on their own
- * once real entries replace them.
+ * Lives on /about rather than the home page: the home page is for the work,
+ * and the roles are the story behind it. The disclaimer and the per-row badges
+ * only render while a row is still placeholder data — see src/data/experience.ts.
  */
 export function ExperienceTimeline() {
   const section = useRef<HTMLElement>(null);
@@ -77,18 +77,33 @@ export function ExperienceTimeline() {
   return (
     <section ref={section} id="experience" className="relative px-5 py-[12vh] md:px-10" aria-label="Experience">
       <div className="mx-auto max-w-[1240px]">
-        <ChapterLabel index={5} label="Experience" id="experience" />
+        <div className="flex items-center gap-4">
+          <span className="h-px w-10 bg-line" />
+          <span className="label">Experience</span>
+        </div>
 
         <div className="mt-8 flex flex-wrap items-end justify-between gap-6 border-b border-line pb-8">
-          <h2 className="display text-[clamp(1.9rem,5vw,4rem)] text-paper">
-            The <span className="text-accent">timeline.</span>
+          <h2 className="display max-w-[16ch] text-[clamp(1.9rem,5vw,4rem)] text-paper">
+            Where I&rsquo;ve <span className="text-accent">worked.</span>
           </h2>
+
+          {/* The same roles, in the format a recruiter will ask for. */}
+          <a
+            href={site.resume.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cursor="OPEN ↗"
+            className="group inline-flex items-center gap-2 border-b border-line pb-1 font-mono text-[10.5px] uppercase tracking-[0.16em] text-paper/80 transition-colors hover:border-accent hover:text-paper"
+          >
+            Also on my CV
+            <span className="transition-transform duration-500 group-hover:translate-x-1">↗</span>
+          </a>
 
           {!hasRealExperience && (
             <p className="max-w-[44ch] rounded-md border border-dashed border-line px-4 py-3 text-[12.5px] leading-relaxed text-muted">
               <span className="label label-accent mb-1 block">Placeholder content</span>
               These entries are dummy data standing in for the real timeline. Replace them in{" "}
-              <code className="font-mono text-[11.5px] text-paper/80">src/data/experience.ts</code> — this
+              <code className="font-mono text-[11.5px] text-paper/80">src/data/experience.ts</code>. This
               notice removes itself once they are real.
             </p>
           )}

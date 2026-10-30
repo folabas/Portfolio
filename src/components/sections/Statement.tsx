@@ -46,6 +46,7 @@ export function Statement() {
   return (
     <section
       ref={section}
+      id="statement"
       className="relative px-5 py-[18vh] md:px-10"
       aria-label="What I build"
     >
